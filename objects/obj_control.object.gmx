@@ -135,8 +135,8 @@ if (global.turn == "DS"){
         var obstructed_y = 480;
         var crater_y = 224;
         
-        if (y &lt; obstructed_y &amp;&amp; y &gt; crater_y)
-            other.f_units -= attack//get_attack_value(object_index);
+        if (y &lt;= obstructed_y &amp;&amp; y &gt; crater_y)
+            other.f_units -= attack;//get_attack_value(object_index);
     }
         
     
@@ -144,9 +144,14 @@ if (global.turn == "DS"){
     with(obj_infantry)
         other.i_units -= attack;
         
-    a_units = armor_units - (instance_number(obj_defender) + instance_number(obj_howitzer) - instance_number(obj_infantry));
+    a_units = armor_units - (instance_number(obj_defender) + instance_number(obj_howitzer) 
+                          - instance_number(obj_infantry) - instance_number(obj_cp));
     
-    
+    if (instance_number(obj_cp) &gt; 0)
+        obj_same_room_button.visible = true;
+    else   
+        obj_same_room_button.visible = false;
+        
     if (global.unit_selected != "None"){
     
         if (global.unit_selected != "Delete"){
@@ -181,12 +186,18 @@ if (global.turn == "DS"){
                     show_valid_tiles()
             }   
         } else 
-            obj_hex.sprite_index = spr_hex;
+            show_occupied_tiles();
     } else
         obj_hex.sprite_index = spr_hex;
         
 } else if (global.turn == "AS"){
     // Attacker setup
+    
+    if (instance_number(obj_ogre) &gt; 0)
+        obj_same_room_button.visible = true;
+    else   
+        obj_same_room_button.visible = false;
+    
     if (global.unit_selected != "Delete"){
         if (instance_number(obj_ogre) &gt; 0){
             // Invalidate current selection
@@ -195,7 +206,7 @@ if (global.turn == "DS"){
             show_valid_tiles();
         }
     } else {
-        obj_hex.sprite_index = spr_hex;
+        show_occupied_tiles();
     }
 }
 
@@ -223,6 +234,12 @@ if (global.turn == "DS"){
             <kind>1</kind>
             <string>/// The game
 
+if (global.turn == "A"){
+    //show_debug_message("Attacker");
+} else if (global.turn == "D"){
+
+
+}
 </string>
           </argument>
         </arguments>
@@ -316,24 +333,24 @@ if (global.turn == "DS"){
     
     // Show invalid selections
     if (i_units &lt; 3){
-        draw_text_color(x_start + 32, y_start - offset + 32 * 6, "----------------- Not enough units", c_red, c_red, c_red, c_red, 1);
+        draw_text_color(x_start + 32, y_start - offset + 32 * 6, "-----------------         Not enough units", c_red, c_red, c_red, c_red, 1);
     }
     if (i_units &lt; 2){
-        draw_text_color(x_start + 32, y_start - offset + 32 * 5, "----------------- Not enough units", c_red, c_red, c_red, c_red, 1);
+        draw_text_color(x_start + 32, y_start - offset + 32 * 5, "-----------------         Not enough units", c_red, c_red, c_red, c_red, 1);
     }
     if (i_units &lt; 1){
-        draw_text_color(x_start + 32, y_start - offset + 32 * 4, "----------------- Not enough units", c_red, c_red, c_red, c_red, 1);
+        draw_text_color(x_start + 32, y_start - offset + 32 * 4, "-----------------         Not enough units", c_red, c_red, c_red, c_red, 1);
     }
     if (a_units &lt; 1){
-        draw_text_color(x_start + 32, y_start - offset, "------------------  Not enough units", c_red, c_red, c_red, c_red, 1);
-        draw_text_color(x_start + 32, y_start - offset + 32, "------------------  Not enough units", c_red, c_red, c_red, c_red, 1);
-        draw_text_color(x_start + 32, y_start - offset + 32 * 2, "---                Not enough units", c_red, c_red, c_red, c_red, 1);
+        draw_text_color(x_start + 32, y_start - offset, "-------------------       Not enough units", c_red, c_red, c_red, c_red, 1);
+        draw_text_color(x_start + 32, y_start - offset + 32, "--------------------      Not enough units", c_red, c_red, c_red, c_red, 1);
+        draw_text_color(x_start + 32, y_start - offset + 32 * 2, "------                Not enough units", c_red, c_red, c_red, c_red, 1);
     }
     if (a_units &lt; 2){
-        draw_text_color(x_start + 32, y_start - offset + 32 * 3, "------------------- Not enough units", c_red, c_red, c_red, c_red, 1);
+        draw_text_color(x_start + 32, y_start - offset + 32 * 3, "---------------          Not enough units", c_red, c_red, c_red, c_red, 1);
     }  
     if (instance_number(obj_cp) &gt; 0){
-        draw_text_color(x_start + 32, y_start - offset + 32 * 7, "--------------------- Command Post already placed", c_red, c_red, c_red, c_red, 1);
+        draw_text_color(x_start + 32, y_start - offset + 32 * 7, "------------------------    Command Post already placed", c_red, c_red, c_red, c_red, 1);
     }
     
     // Show selected unit

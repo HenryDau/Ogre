@@ -40,6 +40,7 @@
       <script>scripts\hex_and_valid_path.gml</script>
       <script>scripts\draw_adjacents.gml</script>
       <script>scripts\show_valid_tiles.gml</script>
+      <script>scripts\show_occupied_tiles.gml</script>
     </scripts>
     <script>scripts\get_selected_unit.gml</script>
     <script>scripts\next_turn.gml</script>
