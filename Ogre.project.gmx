@@ -6,7 +6,6 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_ogre</sprite>
     <sprites name="Defenders">
       <sprite>sprites\spr_heavy_tank</sprite>
       <sprite>sprites\spr_missile_tank</sprite>
@@ -29,6 +28,14 @@
       <sprite>sprites\spr_delete</sprite>
       <sprite>sprites\spr_done_button</sprite>
     </sprites>
+    <sprites name="Ogre">
+      <sprite>sprites\spr_ogre</sprite>
+      <sprite>sprites\spr_missile</sprite>
+      <sprite>sprites\spr_main_battery</sprite>
+      <sprite>sprites\spr_secondary_battery</sprite>
+      <sprite>sprites\spr_antipersonnel</sprite>
+      <sprite>sprites\spr_tread</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title</background>
@@ -46,6 +53,7 @@
     <script>scripts\next_turn.gml</script>
     <script>scripts\invalidate_selected.gml</script>
     <script>scripts\get_attack_value.gml</script>
+    <script>scripts\show_ogre_details.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Terrain">
@@ -68,7 +76,14 @@
       <object>objects\obj_cp</object>
       <object>objects\obj_defender</object>
     </objects>
-    <object>objects\obj_ogre</object>
+    <objects name="Ogre">
+      <object>objects\obj_ogre</object>
+      <object>objects\obj_missile</object>
+      <object>objects\obj_main_battery</object>
+      <object>objects\obj_secondary_battery</object>
+      <object>objects\obj_antipersonnel</object>
+      <object>objects\obj_tread</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\game</room>

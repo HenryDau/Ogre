@@ -16,6 +16,16 @@ if (global.unit_selected == "Command Post")
     return obj_cp
 if (global.unit_selected == "Ogre")
     return obj_ogre
+if (global.unit_selected == "Missile")
+    return obj_missile
+if (global.unit_selected == "Main Battery")
+    return obj_missile
+if (global.unit_selected == "Secondary Battery")
+    return obj_secondary_battery
+if (global.unit_selected == "Antipersonnel")
+    return obj_antipersonnel
+if (global.unit_selected == "Tread")
+    return obj_tread
 return noone
     
 //show_debug_message("How did this mess up???:  " + string(global.unit_selected))

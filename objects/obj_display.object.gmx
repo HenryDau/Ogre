@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>this_unit = spr_missile_tank;
+            <string>this_unit = "None";
 </string>
           </argument>
         </arguments>

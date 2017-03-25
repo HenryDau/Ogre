@@ -375,6 +375,7 @@ if (global.turn == "DS"){
     }
 } else {
     // Draw the game
+    show_ogre_details(400,100);
 
 }
 
