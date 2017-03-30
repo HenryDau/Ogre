@@ -28,6 +28,7 @@
             <string>draw=false;
 radius = 5;
 has_unit = false;
+cost = 0;
 
 
 </string>
@@ -54,7 +55,6 @@ has_unit = false;
             <kind>1</kind>
             <string>//show_debug_message(string(northeast));
 //draw=true;
-
 
 if (global.turn == "DS" ){
     if (global.unit_selected == "Delete"){
@@ -87,11 +87,141 @@ if (global.turn == "DS" ){
             has_unit = true;
         }
     }
-} else {
-    if (global.selected_tile != noone)
+} else if (global.turn == "AM"){
+    // Attacker turn
+    if (sprite_index == spr_valid_hex){
+        global.tile.has_unit = false;
+        global.tile = noone;
+        
+        with(obj_ogre){
+            current_movement = other.cost;
+            x = other.x;
+            y = other.y;
+        }
+        
+        with(obj_hex){
+            sprite_index = spr_hex
+            cost = 0;
+        }
+        
+        if (obj_ogre.current_movement &gt; 1){
+            show_valid_moves(obj_ogre.current_movement); 
+        }
+        has_unit = true;
+    }
+    if (has_unit){
+        var unit = instance_place(x, y, obj_ogre);
+        if (unit != noone){     // If its an ogre...
+            show_valid_moves(unit.current_movement);
+            global.tile = id;
+        }
+    }
+    global.tile = id;
+} else if (global.turn == "DM" || global.turn == "DM2"){
+    // Defender turn
+    if (sprite_index == spr_valid_hex){
+        if (global.defender != noone){
+            var unit = instance_place(x,y, obj_infantry)
+            if (global.defender.cost_type == "infantry" &amp;&amp; unit != noone){
+                if (unit != global.defender){       // Gotta do this check so a unit doesn't move onto itself
+                    show_debug_message("Special infantry stacking...");
+                    
+                    // Current unit is an infantry moving onto an infantry, so do special infantry stacking
+                    var new_attack = global.defender.attack + unit.attack;
+                    
+                    // Move the infantry and change its attack
+                    with (global.defender){
+                        if (unit.current_movement != 0)
+                            current_movement = other.cost;
+                        else
+                            current_movement = 0;
+                        x = other.x;
+                        y = other.y;
+                        attack = new_attack;
+                        defense = new_attack;
+                        if (new_attack == 2){
+                            sprite_index = spr_infantry_2
+                            name = "Infantry 2"
+                        } else {  
+                            sprite_index = spr_infantry_3
+                            name = "Infantry 3"
+                        }
+                    }
+                    
+                    // Destroy the old unit
+                    with (unit)
+                        instance_destroy();
+                    
+                    // Tell the old tile it doesn't have a unit anymore and remove last selected tile
+                    global.tile.has_unit = false;
+                    global.tile = noone;
+                    
+                    // Reset all tiles
+                    with(obj_hex){
+                        sprite_index = spr_hex
+                        cost = 0;
+                    }
+                    
+                    // If the unit still has moves left, show those moves
+                    if (global.defender.current_movement &gt; 1){
+                        show_valid_moves(global.defender.current_movement);
+                        global.tile = id;
+                    }
+                    
+                    // Tell the tile it has a unit
+                    has_unit = true;
+                }
+            } else {
+                // Normal movement
+                global.tile.has_unit = false;
+                global.tile = noone;
+                
+                with (global.defender){
+                    current_movement = other.cost;
+                    x = other.x;
+                    y = other.y;
+                }
+                
+                with(obj_hex){
+                    sprite_index = spr_hex
+                    cost = 0;
+                }
+                
+                if (global.defender.current_movement &gt; 1){
+                    show_valid_moves(global.defender.current_movement);
+                    global.tile = id;
+                }
+                has_unit = true;
+            }
+        } else {
+            // Valid hex but a unit wasn't selected...
+        }  
+    } else {
+        with(obj_hex){
+            cost = 0;
+            sprite_index = spr_hex;
+        }
+        if (has_unit){
+            // There is a unit, is it an ogre or defender?
+            var unit = instance_place(x, y, obj_defender);
+            if (unit != noone &amp;&amp; !unit.disabled){
+                // If this is a defender
+                show_valid_moves(unit.current_movement);
+                global.defender = unit;
+                global.tile = id;
+            }
+        } else {
+            // Not a valid hex and nothing is here... do nothing
+        }
+    }
+    
+    /*if (global.selected_tile != noone)
         global.selected_tile.sprite_index = spr_hex;
     global.selected_tile = object_index;
     sprite_index = spr_valid_hex;
+    
+    } else {
+        show_debug_message("Well, you dun goofed");*/
 }
 </string>
           </argument>
@@ -116,13 +246,14 @@ if (global.turn == "DS" ){
           <argument>
             <kind>1</kind>
             <string>draw_self()
+//draw_text(x,y,string(cost));
 if (draw){
     //radius ++;
     //if (northeast != noone)
     //    draw_circle(northeast.x, northeast.y, radius, c_white); 
     //draw_circles();
     draw_adjacents();
-    draw_circle(x, y, 3, c_black); 
+    //draw_circle(x, y, 3, c_black); 
 }
 </string>
           </argument>

@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>attack = 4
-range = 2
-defense = 3
-movement = 3
-cost = 1;
-cost_type = "armor";
+            <string>attack = 3
+range = 4
+defense = 2
+movement = 2
+event_inherited();
+name = "Missile Tank"
 </string>
           </argument>
         </arguments>

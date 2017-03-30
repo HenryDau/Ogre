@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>attack = 1;
+            <string>event_inherited();
+attack = 1;
 range = 1;
 defense = 1;
 this_unit = "Antipersonnel";

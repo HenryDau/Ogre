@@ -26,10 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>/// Define constants and displays
+randomize();
 
 global.unit_selected = "None";
 global.selected_tile = noone;
 global.turn = "DS"
+global.defender = noone;
+global.target = false;
+global.paused = false;
 
 MAX_WIDTH = view_wview;
 MAX_HEIGHT = view_hview;
@@ -38,6 +42,8 @@ infantry_units = 20;
 armor_units = 12;
 forward_attack = 20;
 f_units = forward_attack;
+
+obj_attack_button.visible = false;
 </string>
           </argument>
         </arguments>
@@ -234,11 +240,41 @@ if (global.turn == "DS"){
             <kind>1</kind>
             <string>/// The game
 
-if (global.turn == "A"){
+if (global.turn == "AM"){
     //show_debug_message("Attacker");
-} else if (global.turn == "D"){
+    
+    if (get_selected_unit() == obj_ogre){
+        
+    } else {
+        obj_hex.sprite_index = spr_hex;
+        /*var tile = get_tile_at_ogre();
+        tile.cost = obj_ogre.current_movement - 1;
+        if (tile.cost &gt;= 0)
+            tile.sprite_index = spr_valid_hex;*/
+    }
 
+} else if (global.turn == "AA"){
+    //if (global.unit_selected != "None" &amp;&amp; global.unit_selected != "Ogre")
+    //    show_valid_targets();
 
+} else if (global.turn == "DM" || global.turn == "DM2"){
+    // Defender movement
+
+} else if (global.turn == "DA"){
+    // Defender Attack
+    var selected_units = 0;
+    with (obj_defender){
+        if (selected){
+            selected_units++;
+        }
+    }
+    if (selected_units &gt; 0 &amp;&amp; global.target != noone){
+        if (selected_units &gt; 1 &amp;&amp; global.target.sprite_index == spr_tread){
+            obj_attack_button.visible = false;
+        } else
+            obj_attack_button.visible = true;
+    } else
+        obj_attack_button.visible = false;
 }
 </string>
           </argument>
@@ -320,6 +356,8 @@ if (global.turn == "A"){
 if (global.turn == "DS"){
     // Defender setup
     
+    draw_sprite(spr_ds, -1, x_start + 200, y_start - 76);
+    
     // Displays for selecting defense units
     draw_text_color(x_start + 32, y_start - offset, "Heavy Tank", c_black, c_black, c_black, c_black, 1);
     draw_text_color(x_start + 32, y_start - offset + 32, "Missile Tank", c_black, c_black, c_black, c_black, 1);
@@ -365,6 +403,8 @@ if (global.turn == "DS"){
 } else if (global.turn == "AS"){
     // Attacker setup
     
+    draw_sprite(spr_as, -1, x_start + 200, y_start - 76);
+    
     draw_text_color(x_start + 32, y_start - offset, "Ogre Mk III", c_black, c_black, c_black, c_black, 1);
     draw_text_color(x_start + 32, y_start - offset + 32, "Delete", c_black, c_black, c_black, c_black, 1);
     
@@ -375,15 +415,118 @@ if (global.turn == "DS"){
     }
 } else {
     // Draw the game
-    show_ogre_details(400,100);
-
+    show_ogre_details();
+    if (global.turn == "AA"){
+        draw_sprite(spr_aa, -1, x_start + 200, y_start - 76);
+        //draw_text_color(x_start + 200, y_start  + 200, "Combined Range: " + string(global.combined_attack_range), c_black, c_black, c_black, c_black, 1);
+    } else if (global.turn == "AM")
+        draw_sprite(spr_am, -1, x_start + 200, y_start - 76);
+    else if (global.turn == "DM")
+        draw_sprite(spr_dm, -1, x_start + 200, y_start - 76);
+    else if (global.turn == "DA")
+        draw_sprite(spr_da, -1, x_start + 200, y_start - 76);
+    else if (global.turn == "DM2")
+        draw_sprite(spr_dm2, -1, x_start + 200, y_start - 76);
 }
 
 // Show selected unit
 draw_text_color(x_start, y_start - 64 - 32, "Selected Unit", c_black, c_black, c_black, c_black, 1);
 draw_text_color(x_start + 32, y_start - offset - 64, global.unit_selected, c_black, c_black, c_black, c_black, 1);
 
+if (global.turn != "DS" &amp;&amp; global.turn != "AS"){
+    // Show current unit details
+    show_current_unit_details();
+}
 
+if (global.turn == "AA" || global.turn == "DA"){
+
+    var chance = get_odds();    // Returns [disable, kill, odds_str, combined_attack]
+    
+    // Show attacker strength
+    if (chance[3] != 0 &amp;&amp; instance_number(obj_dice) == 0)
+        draw_text_color(x_start + 32 * 7, y_start + 32, "Combined Attack: " + string(chance[3]), c_black, c_black, c_black, c_black, 1);
+    
+    // Show target defense
+    if (global.target != noone &amp;&amp; instance_number(obj_dice) == 0)
+        if (global.target.sprite_index == spr_tread)
+            draw_text_color(x_start + 32 * 7, y_start + 64, "Target Defense: Matches attacker", c_black, c_black, c_black, c_black, 1);
+        else
+            draw_text_color(x_start + 32 * 7, y_start + 64, "Target Defense: " + string(global.target.defense), c_black, c_black, c_black, c_black, 1);
+       
+    // Show the odds
+    if (chance[2] != "null"){
+        draw_text_color(x_start + 32 * 7, y_start + 32 * 3, "Odds: " + string(chance[2]), c_black, c_black, c_black, c_black, 1);
+        
+        // Do kill display
+        //draw_text_color(x_start + 32 * 7, y_start + 32 * 4, "Chance to kill: " + string(chance[1] / 6), c_black, c_black, c_black, c_black, 1);   
+        draw_text_color(x_start + 32 * 7, y_start + 32 * 4, "Chance to kill: ", c_black, c_black, c_black, c_black, 1);
+        
+        var x_offset = 125;
+        if (chance[1] &gt;= 1){
+            draw_sprite_ext(spr_six, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 4 - offset, 0.40, 0.40, 0, c_white, 1 );
+            x_offset += 32;
+        }
+        if (chance[1] &gt;= 2){
+            draw_sprite_ext(spr_five, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 4 - offset, 0.40, 0.40, 0, c_white, 1 );
+            x_offset += 32;
+        }
+        if (chance[1] &gt;= 3){
+            draw_sprite_ext(spr_four, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 4 - offset, 0.40, 0.40, 0, c_white, 1 );
+            x_offset += 32;
+        }
+        if (chance[1] &gt;= 4){
+            draw_sprite_ext(spr_three, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 4 - offset, 0.40, 0.40, 0, c_white, 1 );
+            x_offset += 32;
+        }
+        if (chance[1] &gt;= 5){
+            draw_sprite_ext(spr_two, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 4 - offset, 0.40, 0.40, 0, c_white, 1 );
+            x_offset += 32;
+        } 
+        if (chance[1] &gt;= 6){
+            draw_sprite_ext(spr_one, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 4 - offset, 0.40, 0.40, 0, c_white, 1 );
+            x_offset += 32;
+        }
+        
+        // Show disable rolls
+        if (global.turn == "AA"){
+            draw_text_color(x_start + 32 * 7, y_start + 32 * 5, "Chance to disable: ", c_black, c_black, c_black, c_black, 1);
+            
+            var x_offset = 160;
+            if (chance[2] == "1:2"){
+                draw_sprite_ext(spr_five, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 5 - offset, 0.40, 0.40, 0, c_white, 1 );
+                x_offset += 32;
+            } 
+            if (chance[2] == "1:1"){
+                draw_sprite_ext(spr_four, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 5 - offset, 0.40, 0.40, 0, c_white, 1 );
+                x_offset += 32;
+            }  
+            if (chance[2] == "1:1" || chance[2] == "2:1"){
+                draw_sprite_ext(spr_three, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 5 - offset, 0.40, 0.40, 0, c_white, 1 );
+                x_offset += 32;
+            } 
+            if (chance[2] == "2:1" || chance[2] == "3:1"){
+                draw_sprite_ext(spr_two, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 5 - offset, 0.40, 0.40, 0, c_white, 1 );
+                x_offset += 32;
+            } 
+            if (chance[2] == "3:1" || chance[2] == "4:1"){
+                draw_sprite_ext(spr_one, -1, x_start + 32 * 7 + x_offset, y_start + 32 * 5 - offset, 0.40, 0.40, 0, c_white, 1 );
+                x_offset += 32;
+            }
+        }
+    }
+}
+
+// Tell the player they are trying to cheat... cheecky buggers.
+if (global.turn == "DA"){
+    var selected_units = 0;
+    with (obj_defender){
+        if (selected){
+            selected_units++;
+        }
+    }
+    if (global.target != noone &amp;&amp; selected_units &gt; 1 &amp;&amp; global.target.sprite_index == spr_tread)
+        draw_text(675, 640, "Can not attack treads with multiple units");    
+}
 
 
 </string>

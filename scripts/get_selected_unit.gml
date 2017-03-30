@@ -19,13 +19,15 @@ if (global.unit_selected == "Ogre")
 if (global.unit_selected == "Missile")
     return obj_missile
 if (global.unit_selected == "Main Battery")
-    return obj_missile
+    return obj_main_battery
 if (global.unit_selected == "Secondary Battery")
     return obj_secondary_battery
 if (global.unit_selected == "Antipersonnel")
     return obj_antipersonnel
 if (global.unit_selected == "Tread")
     return obj_tread
-return noone
+//show_debug_message("Used default unit:  " + string(global.unit_selected))
+return global.unit_selected
+//return noone
     
 //show_debug_message("How did this mess up???:  " + string(global.unit_selected))

@@ -27,6 +27,10 @@
       <sprite>sprites\spr_play_button</sprite>
       <sprite>sprites\spr_delete</sprite>
       <sprite>sprites\spr_done_button</sprite>
+      <sprite>sprites\spr_attack_button</sprite>
+      <sprite>sprites\spr_miss</sprite>
+      <sprite>sprites\spr_disable</sprite>
+      <sprite>sprites\spr_kill</sprite>
     </sprites>
     <sprites name="Ogre">
       <sprite>sprites\spr_ogre</sprite>
@@ -35,6 +39,25 @@
       <sprite>sprites\spr_secondary_battery</sprite>
       <sprite>sprites\spr_antipersonnel</sprite>
       <sprite>sprites\spr_tread</sprite>
+      <sprite>sprites\spr_outline</sprite>
+    </sprites>
+    <sprites name="Dice">
+      <sprite>sprites\spr_die_rolling</sprite>
+      <sprite>sprites\spr_one</sprite>
+      <sprite>sprites\spr_two</sprite>
+      <sprite>sprites\spr_three</sprite>
+      <sprite>sprites\spr_four</sprite>
+      <sprite>sprites\spr_five</sprite>
+      <sprite>sprites\spr_six</sprite>
+    </sprites>
+    <sprites name="Turn Display">
+      <sprite>sprites\spr_ds</sprite>
+      <sprite>sprites\spr_as</sprite>
+      <sprite>sprites\spr_am</sprite>
+      <sprite>sprites\spr_aa</sprite>
+      <sprite>sprites\spr_dm</sprite>
+      <sprite>sprites\spr_da</sprite>
+      <sprite>sprites\spr_dm2</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -43,17 +66,33 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Tile Stuff">
+      <script>scripts\show_valid_moves.gml</script>
       <script>scripts\find_adjacent_tiles.gml</script>
       <script>scripts\hex_and_valid_path.gml</script>
-      <script>scripts\draw_adjacents.gml</script>
+      <script>scripts\check_occupied.gml</script>
       <script>scripts\show_valid_tiles.gml</script>
       <script>scripts\show_occupied_tiles.gml</script>
+      <script>scripts\draw_adjacents.gml</script>
+      <script>scripts\show_valid_targets.gml</script>
+      <script>scripts\get_tile_at_ogre.gml</script>
+      <script>scripts\get_tile_at.gml</script>
     </scripts>
-    <script>scripts\get_selected_unit.gml</script>
-    <script>scripts\next_turn.gml</script>
-    <script>scripts\invalidate_selected.gml</script>
-    <script>scripts\get_attack_value.gml</script>
+    <scripts name="Turn Management">
+      <script>scripts\init_special_gev_movement.gml</script>
+      <script>scripts\init_ogre_turn.gml</script>
+      <script>scripts\init_defender_turn.gml</script>
+    </scripts>
+    <scripts name="Control">
+      <script>scripts\get_selected_unit.gml</script>
+      <script>scripts\get_attack_value.gml</script>
+      <script>scripts\invalidate_selected.gml</script>
+      <script>scripts\next_turn.gml</script>
+    </scripts>
     <script>scripts\show_ogre_details.gml</script>
+    <script>scripts\create_ogre_displays.gml</script>
+    <script>scripts\show_current_unit_details.gml</script>
+    <script>scripts\launch_attack.gml</script>
+    <script>scripts\get_odds.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Terrain">
@@ -66,6 +105,10 @@
       <object>objects\obj_display</object>
       <object>objects\obj_control</object>
       <object>objects\obj_same_room_button</object>
+      <object>objects\obj_attack_button</object>
+      <object>objects\obj_outline</object>
+      <object>objects\obj_result</object>
+      <object>objects\obj_dice</object>
     </objects>
     <objects name="Defenders">
       <object>objects\obj_heavy_tank</object>

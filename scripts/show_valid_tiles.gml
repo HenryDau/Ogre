@@ -2,6 +2,8 @@
 
 var obstructed_y = 480;
 var crater_y = 224;
+//var bottom_y = 672;
+var bottom_y = 50;
 
 if (global.turn == "DS"){
     with(obj_hex){
@@ -19,7 +21,7 @@ if (global.turn == "DS"){
 
 } else if (global.turn == "AS"){
     with(obj_hex){
-        if (y > obstructed_y)
+        if (y >= bottom_y)
             sprite_index = spr_valid_hex
     }
 }

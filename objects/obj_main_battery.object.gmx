@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>attack = 4;
+            <string>event_inherited();
+attack = 4;
 range = 3;
 defense = 4;
 this_unit = "Main Battery";

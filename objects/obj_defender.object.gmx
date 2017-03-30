@@ -8,6 +8,35 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cost = 1;
+current_movement = movement;
+disabled = false;
+disabled_this_turn = false;
+has_shot = false;
+cost_type = "armor";
+selected = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
@@ -31,6 +60,122 @@ if (tile != noone){
 } else {
     show_debug_message("WARNING, WHY DIDNT THIS HAVE A TILE?!?!");
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (disabled)
+    image_blend = make_color_hsv(0, 64, 32);
+else {
+    
+    if (global.turn == "DM" || global.turn == "DM2"){
+        if (current_movement == 0){
+            if (object_index != obj_cp &amp;&amp; object_index != obj_howitzer)
+                image_blend = make_color_hsv(40, 0, 100);
+        } else {
+            image_blend = make_color_hsv(0, 0, 255);
+        }
+    } else {
+        if (global.turn == "DA"){
+            if (selected)
+                image_blend = make_color_hsv(0, 64, 128);
+            else if (has_shot)
+                image_blend = make_color_hsv(0, 64, 64);
+            else
+                image_blend = make_color_hsv(0, 0, 255);
+        } else
+            image_blend = make_color_hsv(0, 0, 255);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (!global.paused){
+    
+    var tile = get_tile_at(x,y);
+    if (global.turn == "DA" &amp;&amp; tile.sprite_index == spr_valid_hex &amp;&amp; name != "Command Post"){
+        selected = !selected;
+    }
+    
+    if (global.turn == "AA"){
+        if (tile.sprite_index == spr_valid_hex){
+            global.target = id;
+            if (global.combined_attack_range != 0){
+                obj_attack_button.visible = true;
+            }
+        }
+    }
+    
+    if (instance_number(obj_result) &gt; 0)
+        with (obj_result)
+            instance_destroy();
+            
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.turn != "AS"){
+    global.unit_selected = name;
+    global.selected_display.sprite_index = sprite_index;
+    global.defender = id;
+}
+
 </string>
           </argument>
         </arguments>

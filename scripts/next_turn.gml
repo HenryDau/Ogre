@@ -28,8 +28,9 @@ if (global.turn == "DS"){
     
 } else if (global.turn == "AS"){
     // Start the game!
-    global.turn = "A"
+    global.turn = "AM"
     global.unit_selected = "Ogre";
+    global.defender = noone;
     
     with (obj_display)
         instance_destroy();
@@ -38,21 +39,85 @@ if (global.turn == "DS"){
     global.selected_display.sprite_index = spr_ogre;
     global.selected_display.this_unit = "Ogre";
     
-} else if (global.turn == "A"){
+    create_ogre_displays();
+    init_ogre_turn();
+    
+} else if (global.turn == "AM"){
+    global.defender = noone;
+    global.turn = "AA";
+    with (obj_hex){
+        sprite_index = spr_hex;
+        cost = 0;
+    }
+    global.combined_attack_range = 0;
+    
+} else if (global.turn == "AA"){
     // Defender Turn!
     
-    global.turn = "D"
+    global.turn = "DM"
     global.unit_selected = "None";
+    global.defender = noone;
+    with (obj_hex){
+        sprite_index = spr_hex;
+        cost = 0;
+    }
+    obj_crater.cost = 0;
+    obj_outline.visible = false;
+    obj_attack_button.visible = false;
     
     global.selected_display.sprite_index = noone;
     global.selected_display.this_unit = "None";
     
-} else if (global.turn == "D"){
-    // Attacker turn!
+    init_defender_turn();
     
-    global.turn = "A"
+} else if (global.turn == "DM"){
+    global.turn = "DA"
+    with (obj_hex){
+        sprite_index = spr_hex;
+        cost = 0;
+    }
+    show_valid_targets();
+    
+} else if (global.turn == "DA"){
+    // Attacker turn!
+    with (obj_hex){
+        sprite_index = spr_hex;
+        cost = 0;
+    }
+    obj_crater.cost = 0;
+    
+    with (obj_defender)
+        selected = false;
+        
+    obj_attack_button.visible = false;
+    
+    if (instance_number(obj_gev) > 0){
+        init_special_gev_movement();
+        global.turn = "DM2"
+    } else {
+        global.turn = "AM"
+        global.unit_selected = "Ogre";
+    
+        global.selected_display.sprite_index = spr_ogre;
+        global.selected_display.this_unit = "Ogre";
+        
+        init_ogre_turn();
+    }
+} else if (global.turn == "DM2"){
+    global.turn = "AM"
     global.unit_selected = "Ogre";
+    global.defender = noone;
+    with (obj_hex){
+        sprite_index = spr_hex;
+        cost = 0;
+    }
 
     global.selected_display.sprite_index = spr_ogre;
     global.selected_display.this_unit = "Ogre";
+    
+    init_ogre_turn();
 }
+
+if (instance_number(obj_result) > 0)
+    with (obj_result)
+        instance_destroy();

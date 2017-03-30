@@ -11,4 +11,3 @@ northwest = hex_and_valid_path(x - tile_width, y - tile_height);
 southeast = hex_and_valid_path(x + tile_width, y + tile_height);
 southwest = hex_and_valid_path(x - tile_width, y + tile_height);
 
-

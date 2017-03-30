@@ -29,8 +29,8 @@
 range = 2
 defense = 3
 movement = 3
-cost = 1;
-cost_type = "armor";
+event_inherited();
+name = "Heavy Tank"
 </string>
           </argument>
         </arguments>

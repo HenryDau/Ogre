@@ -26,12 +26,16 @@
           <argument>
             <kind>1</kind>
             <string>this_unit = "None";
+selected = false;
+has_shot = false;
+outline = instance_create(x,y,obj_outline);
+outline.visible = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,16 +52,97 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.unit_selected = this_unit;
-
-var spr;
-if (this_unit == "None")
-    spr = noone
-else
-    spr = sprite_index
+            <string>if (global.turn == "AA"){
+    if (has_shot){
+        image_blend = make_color_hsv(40, 0, 100);
+    } else {
+        image_blend = make_color_hsv(0, 0, 255);
+    }
+} else {
+    image_blend = make_color_hsv(0, 0, 255);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.selected_display != id &amp;&amp; !global.paused){
+    global.unit_selected = this_unit;
     
-global.selected_display.sprite_index = spr;
-
+    var spr;
+    if (this_unit == "None")
+        spr = noone
+    else
+        spr = sprite_index
+        
+    global.selected_display.sprite_index = spr;
+    
+    if (instance_number(obj_result) &gt; 0)
+        with (obj_result)
+            instance_destroy();
+    
+    if (global.turn == "AA"){
+        if (!has_shot){
+            selected = !selected;
+            if (selected){
+                outline.visible = true;
+                if (global.combined_attack_range &gt; range || global.combined_attack_range == 0){
+                    global.combined_attack_range = range;
+                } //else 
+                    //show_debug_message("Range: " + string(range) + " Now why didn;t it change");
+            } else {
+                global.combined_attack_range = 0;
+                with(obj_display){
+                    if (selected){
+                        if (global.combined_attack_range &gt; range || global.combined_attack_range == 0){
+                            global.combined_attack_range = range;
+                        }
+                    }
+                }
+                outline.visible = false;
+            }
+        }
+        
+        if (global.combined_attack_range != 0){
+            if (global.target != noone)
+                obj_attack_button.visible = true;
+            else
+                obj_attack_button.visible = false;
+            show_valid_targets();
+        } else {
+            obj_attack_button.visible = false;
+            obj_hex.sprite_index = spr_hex;
+        }
+        
+        // Remove target if selecting a new weapon puts it out of range
+        if (global.target != noone){
+            var tile = get_tile_at(global.target.x, global.target.y);
+            if (tile.sprite_index != spr_valid_hex){
+                global.target = noone;   
+                obj_attack_button.visible = false;
+            }
+        }
+    } else if (global.turn == "DA"){
+        global.target = id;
+    }
+}
 </string>
           </argument>
         </arguments>
