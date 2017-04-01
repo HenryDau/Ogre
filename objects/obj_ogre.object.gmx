@@ -33,6 +33,8 @@ antipersonnel_count = 8;
 tread_count = 45;
 treads_left = tread_count;
 movement = 3;
+
+current_movement = 0;
 </string>
           </argument>
         </arguments>

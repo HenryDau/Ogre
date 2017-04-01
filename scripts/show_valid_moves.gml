@@ -12,6 +12,14 @@ if (cost > movement){
             else
                 sprite_index = spr_hex;
         }
+    } else if (global.turn == "AM" && movement > 0){
+        if (instance_number(obj_multiple_units) > 0){
+            sprite_index = spr_valid_hex;
+        }
+    } else if (global.turn == "AA"){
+        if (instance_number(obj_multiple_units) > 0){
+            sprite_index = spr_valid_hex;
+        }
     }
   
     if (movement > cost)

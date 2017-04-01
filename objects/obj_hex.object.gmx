@@ -108,15 +108,19 @@ if (global.turn == "DS" ){
             show_valid_moves(obj_ogre.current_movement); 
         }
         has_unit = true;
+        
+        check_multiple_units();
+        
     }
-    if (has_unit){
-        var unit = instance_place(x, y, obj_ogre);
-        if (unit != noone){     // If its an ogre...
-            show_valid_moves(unit.current_movement);
-            global.tile = id;
-        }
+    
+    var unit = instance_place(x, y, obj_ogre);
+    if (unit != noone){     // If its an ogre...
+        show_valid_moves(unit.current_movement);
+        global.tile = id;
     }
+    
     global.tile = id;
+    //check_multiple_units();
 } else if (global.turn == "DM" || global.turn == "DM2"){
     // Defender turn
     if (sprite_index == spr_valid_hex){
@@ -170,6 +174,8 @@ if (global.turn == "DS" ){
                     
                     // Tell the tile it has a unit
                     has_unit = true;
+                    
+                    check_multiple_units();
                 }
             } else {
                 // Normal movement
@@ -192,36 +198,30 @@ if (global.turn == "DS" ){
                     global.tile = id;
                 }
                 has_unit = true;
+                
+                check_multiple_units()
             }
         } else {
             // Valid hex but a unit wasn't selected...
         }  
     } else {
+    
         with(obj_hex){
             cost = 0;
             sprite_index = spr_hex;
         }
-        if (has_unit){
+        //if (has_unit){
             // There is a unit, is it an ogre or defender?
-            var unit = instance_place(x, y, obj_defender);
-            if (unit != noone &amp;&amp; !unit.disabled){
-                // If this is a defender
-                show_valid_moves(unit.current_movement);
-                global.defender = unit;
-                global.tile = id;
-            }
-        } else {
-            // Not a valid hex and nothing is here... do nothing
+        var unit = instance_place(x, y, obj_defender);
+        //show_debug_message("Hex 161: Defender " + string(unit.disabled)); 
+        if (unit != noone &amp;&amp; !unit.disabled){
+             
+            // If this is a defender
+            show_valid_moves(unit.current_movement);
+            global.defender = unit;
+            global.tile = id;
         }
     }
-    
-    /*if (global.selected_tile != noone)
-        global.selected_tile.sprite_index = spr_hex;
-    global.selected_tile = object_index;
-    sprite_index = spr_valid_hex;
-    
-    } else {
-        show_debug_message("Well, you dun goofed");*/
 }
 </string>
           </argument>

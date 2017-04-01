@@ -31,6 +31,7 @@
       <sprite>sprites\spr_miss</sprite>
       <sprite>sprites\spr_disable</sprite>
       <sprite>sprites\spr_kill</sprite>
+      <sprite>sprites\spr_multiple_units</sprite>
     </sprites>
     <sprites name="Ogre">
       <sprite>sprites\spr_ogre</sprite>
@@ -76,6 +77,7 @@
       <script>scripts\show_valid_targets.gml</script>
       <script>scripts\get_tile_at_ogre.gml</script>
       <script>scripts\get_tile_at.gml</script>
+      <script>scripts\check_multiple_units.gml</script>
     </scripts>
     <scripts name="Turn Management">
       <script>scripts\init_special_gev_movement.gml</script>
@@ -109,6 +111,8 @@
       <object>objects\obj_outline</object>
       <object>objects\obj_result</object>
       <object>objects\obj_dice</object>
+      <object>objects\obj_multiple_units</object>
+      <object>objects\obj_simple_display</object>
     </objects>
     <objects name="Defenders">
       <object>objects\obj_heavy_tank</object>
