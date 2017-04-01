@@ -20,6 +20,10 @@ if (global.turn == "AA"){
         if (selected)
             combined_attack += attack;
     }
+} else if (global.turn == "AM"){
+    odds = -2;
+    chances[0] = 3;
+    chances[1] = 3;
 }
 
 // Display odds
@@ -69,9 +73,8 @@ if (odds == -1){
 } else if (odds == 5){
     chances[0] = 0;
     chances[1] = 6;
-} else {
-    show_debug_message("Odds not recognized: " + string(odds));
 }
+
 chances[2] = str_odds;
 chances[3] = combined_attack;
 

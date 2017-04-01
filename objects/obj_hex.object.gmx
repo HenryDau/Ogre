@@ -88,39 +88,115 @@ if (global.turn == "DS" ){
         }
     }
 } else if (global.turn == "AM"){
+
     // Attacker turn
-    if (sprite_index == spr_valid_hex){
-        global.tile.has_unit = false;
-        global.tile = noone;
-        
-        with(obj_ogre){
-            current_movement = other.cost;
-            x = other.x;
-            y = other.y;
-        }
-        
-        with(obj_hex){
-            sprite_index = spr_hex
-            cost = 0;
-        }
-        
-        if (obj_ogre.current_movement &gt; 1){
-            show_valid_moves(obj_ogre.current_movement); 
-        }
-        has_unit = true;
-        
-        check_multiple_units();
-        
+    
+    if (instance_number(obj_result) &gt; 0){
+        with (obj_result)
+            instance_destroy();
     }
     
-    var unit = instance_place(x, y, obj_ogre);
-    if (unit != noone){     // If its an ogre...
-        show_valid_moves(unit.current_movement);
+    if (!global.paused){
+        if (sprite_index == spr_valid_hex){
+            global.tile.has_unit = false;
+            global.tile = noone;
+            
+            with(obj_ogre){
+            
+                // Check if the ogre moved
+                if (other.id == get_tile_at_ogre())
+                    obj_ogre.current_movement--;
+                else
+                    current_movement = other.cost;
+                x = other.x;
+                y = other.y;
+            }
+            
+            with(obj_hex){
+                sprite_index = spr_hex
+                cost = 0;
+            }
+            
+            var def = instance_place(x,y,obj_defender);
+            if (def != noone){
+                
+                // RAM!
+                sprite_index = spr_hex;
+                
+                if (def.name == "Command Post"){
+                    with (def)
+                        instance_destroy();
+                        
+                    var display = instance_create(784, 160, obj_result);
+                    display.sprite_index = spr_kill;
+                    
+                } else {
+                
+                    var infantry = instance_place(x,y,obj_infantry)
+                    if (infantry != noone){
+                        
+                        // Moving through infantry
+                        
+                    } else {
+                    
+                        // Ram an armor unit
+                        var treads_to_destroy = 1;
+                        
+                        // If its a heavy tank, the cost is 2
+                        if (def.name == "Heavy Tank")
+                            treads_to_destroy = 2;
+                                
+                        if (def.name == "Howitzer" || def.disabled) {
+                        
+                            var display = instance_create(784, 160, obj_result);
+                            display.sprite_index = spr_kill;
+                            
+                            with (def)
+                                instance_destroy();
+                        } else {
+                            // Not a howizter or disabled
+                            launch_attack();
+                        }
+                        
+                        var ratio_before = instance_number(obj_tread) / obj_ogre.tread_count;
+                        
+                        // Destroy treads for ramming
+                        with (obj_tread){
+                            if (treads_to_destroy &gt; 0)
+                                instance_destroy();
+                            treads_to_destroy--;
+                        }   
+                        
+                        // Find out the ogre's current movement
+                        var ratio_after = instance_number(obj_tread) / obj_ogre.tread_count;
+                        
+                        // Remove movement if that's what happends
+                        if (ratio_before &gt; 2/3 &amp;&amp; ratio_after &lt;= 2/3
+                                || ratio_before &gt; 1/3 &amp;&amp; ratio_after &lt;= 1/3
+                                || ratio_before &gt; 0 &amp;&amp; ratio_after &lt;= 0)
+                            obj_ogre.current_movement--;
+                    }
+                }
+            }
+              
+            if (obj_ogre.current_movement &gt; 1){
+                show_valid_moves(obj_ogre.current_movement); 
+            }
+            has_unit = true;
+            
+            check_multiple_units();
+            
+        }
+        
+        var unit = instance_place(x, y, obj_ogre);
+        if (unit != noone){     // If its an ogre...
+            show_valid_moves(unit.current_movement);
+            global.tile = id;
+        }
+        
         global.tile = id;
+
     }
-    
-    global.tile = id;
-    //check_multiple_units();
 } else if (global.turn == "DM" || global.turn == "DM2"){
     // Defender turn
     if (sprite_index == spr_valid_hex){
@@ -198,6 +274,18 @@ if (global.turn == "DS" ){
                     global.tile = id;
                 }
                 has_unit = true;
+                
+                if (id == get_tile_at_ogre()){
+                    // RAMMED!
+                    with (global.defender)
+                        instance_destroy();
+                    var destroyed = false;
+                    with (obj_tread){
+                        if (!destroyed)
+                            instance_destroy();
+                        destroyed = true;
+                    }
+                }
                 
                 check_multiple_units()
             }

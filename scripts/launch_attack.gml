@@ -29,8 +29,16 @@ if (global.turn == "AA"){
             tile.sprite_index = spr_hex;
         }
     }
+} else if (global.turn == "AM"){
+    
+    // Set the unit being rammed
+    var tile = get_tile_at_ogre()
+    global.target = instance_place(tile.x, tile.y, obj_defender)
+    if (global.target == noone)
+        show_debug_message("Launch Attack 38: Error, no target selected");
+
 } else {
-    show_debug_message("Why is this availble when no one can attack");
+    show_debug_message("Why is this availble when no one can attack or ram");
 }
 
 // The dice shall judge the victor!

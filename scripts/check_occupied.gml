@@ -4,11 +4,13 @@ var y_dst = argument[2];
 
 if (global.turn == "AM"){
     // Ogre moving
-    tile.sprite_index = spr_valid_hex;
+    if (tile == get_tile_at_ogre() && instance_number(obj_multiple_units) == 0)
+        tile.sprite_index = spr_hex;
+    else
+        tile.sprite_index = spr_valid_hex;
     
 } else if (global.turn == "DM" || global.turn == "DM2"){
     // Defender moving...
-    //var ogre = instance_place(x_dst, y_dst, obj_ogre)
     if (place_meeting(x_dst, y_dst, obj_defender)){
     
         var unit = instance_place(x_dst, y_dst, obj_infantry);
@@ -26,12 +28,22 @@ if (global.turn == "AM"){
                 tile.sprite_index = spr_hex;
             }
         } else {
-        
             // Selected unit isn't infantry, so can't occupy a tile with another defender
             tile.sprite_index = spr_hex;
         }
     } else {
-        tile.sprite_index = spr_valid_hex;
+    
+        // If there is an ogre, armor units can move onto it (but not through), but not infantry
+        var ogre = instance_place(x_dst, y_dst, obj_ogre)
+        if (ogre != noone){
+            if (get_selected_unit() == obj_infantry)
+                tile.sprite_index = spr_hex;
+            else {
+                tile.sprite_index = spr_valid_hex;
+            }
+            return noone;
+        } else
+            tile.sprite_index = spr_valid_hex;
     }
 } else if (global.turn == "AA"){
 

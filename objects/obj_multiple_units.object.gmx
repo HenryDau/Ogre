@@ -72,6 +72,36 @@ def.defender = defender;
     instance_destroy();
 }
 
+var tile = get_tile_at(x,y);
+tile.sprite_index = spr_hex;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var tile = get_tile_at_ogre();
+var defender = instance_place(x, y, obj_defender)
+
+if (defender == noone)
+    instance_destroy();
 </string>
           </argument>
         </arguments>
