@@ -13,7 +13,10 @@ with(obj_ogre){
         movement = 0;
     }
     current_movement = movement;
+    rams_this_turn = 0;
 }
+
+
 var tile = get_tile_at_ogre()
 with (tile){
     show_valid_moves(obj_ogre.current_movement);

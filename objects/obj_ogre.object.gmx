@@ -3,7 +3,7 @@
   <spriteName>spr_ogre</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -33,6 +33,8 @@ antipersonnel_count = 8;
 tread_count = 45;
 treads_left = tread_count;
 movement = 3;
+MAX_RAMS = 2;
+rams_this_turn = 0;
 
 current_movement = 0;
 </string>

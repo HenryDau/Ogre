@@ -6,8 +6,12 @@ if (global.turn == "AM"){
     // Ogre moving
     if (tile == get_tile_at_ogre() && instance_number(obj_multiple_units) == 0)
         tile.sprite_index = spr_hex;
-    else
-        tile.sprite_index = spr_valid_hex;
+    else {
+        if (obj_ogre.rams_this_turn >= obj_ogre.MAX_RAMS && place_meeting(x_dst, y_dst, obj_defender))
+            tile.sprite_index = spr_hex;
+        else
+            tile.sprite_index = spr_valid_hex;
+    }
     
 } else if (global.turn == "DM" || global.turn == "DM2"){
     // Defender moving...

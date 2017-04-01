@@ -136,6 +136,8 @@ if (global.turn == "DS" ){
                     if (infantry != noone){
                         
                         // Moving through infantry
+                        if (instance_number(obj_antipersonnel) &gt; 0)
+                            launch_attack();
                         
                     } else {
                     
@@ -175,6 +177,8 @@ if (global.turn == "DS" ){
                                 || ratio_before &gt; 1/3 &amp;&amp; ratio_after &lt;= 1/3
                                 || ratio_before &gt; 0 &amp;&amp; ratio_after &lt;= 0)
                             obj_ogre.current_movement--;
+                            
+                        obj_ogre.rams_this_turn++;
                     }
                 }
             }
