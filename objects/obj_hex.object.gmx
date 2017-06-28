@@ -150,11 +150,16 @@ if (global.turn == "DS" ){
                                 
                         if (def.name == "Howitzer" || def.disabled) {
                         
-                            var display = instance_create(784, 160, obj_result);
-                            display.sprite_index = spr_kill;
+                            if (obj_ogre.rams_this_turn &gt;= obj_ogre.MAX_RAMS){
+                                show_debug_message("Hex 99: I shouldn't be able to ram...");
+                            } else {
                             
-                            with (def)
-                                instance_destroy();
+                                var display = instance_create(784, 160, obj_result);
+                                display.sprite_index = spr_kill;
+                                       
+                                with (def)
+                                    instance_destroy();
+                            }
                         } else {
                             // Not a howizter or disabled
                             launch_attack();

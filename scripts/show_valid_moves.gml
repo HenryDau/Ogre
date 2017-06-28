@@ -13,7 +13,7 @@ if (cost > movement){
                 sprite_index = spr_hex;
         }
     } else if (global.turn == "AM" && movement > 0){
-        if (instance_number(obj_multiple_units) > 0){
+        if (instance_number(obj_multiple_units) > 0 && obj_ogre.rams_this_turn < obj_ogre.MAX_RAMS){
             sprite_index = spr_valid_hex;
         }
     } else if (global.turn == "AA"){

@@ -32,6 +32,10 @@
       <sprite>sprites\spr_disable</sprite>
       <sprite>sprites\spr_kill</sprite>
       <sprite>sprites\spr_multiple_units</sprite>
+      <sprite>sprites\spr_surrender_button</sprite>
+      <sprite>sprites\spr_surrender</sprite>
+      <sprite>sprites\spr_yes_button</sprite>
+      <sprite>sprites\spr_no_button</sprite>
     </sprites>
     <sprites name="Ogre">
       <sprite>sprites\spr_ogre</sprite>
@@ -113,6 +117,9 @@
       <object>objects\obj_dice</object>
       <object>objects\obj_multiple_units</object>
       <object>objects\obj_simple_display</object>
+      <object>objects\obj_surrender_button</object>
+      <object>objects\obj_pause_menu</object>
+      <object>objects\obj_cancel_button</object>
     </objects>
     <objects name="Defenders">
       <object>objects\obj_heavy_tank</object>

@@ -525,7 +525,7 @@ if (global.turn == "DA"){
         }
     }
     if (global.target != noone &amp;&amp; selected_units &gt; 1 &amp;&amp; global.target.sprite_index == spr_tread)
-        draw_text(675, 640, "Can not attack treads with multiple units");    
+        draw_text(650, 640, "Can not attack treads with multiple units");    
 }
 
 
