@@ -18,6 +18,9 @@ with (obj_defender){
         cp_destroyed = false;
 }
 
+var ogre_destroyed = (instance_number(obj_display) == 1);
+show_debug_message("Ogre things: " + string(instance_number(obj_display)));
+
 if (running && cp_destroyed){
     // Ogre win
     show_debug_message("Ogre win");
@@ -26,7 +29,7 @@ if (running && cp_destroyed){
     win.victory_display = spr_ogre_victory;
 }
 
-if (cp_destroyed && instance_number(obj_ogre) == 0){
+if (cp_destroyed && ogre_destroyed ){
     // Marginal Ogre victory
     show_debug_message("Marginal Ogre win");
     
@@ -42,7 +45,7 @@ if (!cp_destroyed && running ){
     win.victory_display = spr_marginal_defense_victory;
 }
 
-if (!cp_destroyed && instance_number(obj_ogre) == 0){
+if (!cp_destroyed && ogre_destroyed){
 
     if (attack_points >= 30){
         // Complete Defense Victory
