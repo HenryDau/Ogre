@@ -438,9 +438,10 @@
     <instance objName="obj_blockage" x="192" y="480" name="inst_00B5175C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blockage" x="256" y="480" name="inst_2D6EAD96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="60"/>
     <instance objName="obj_control" x="8" y="0" name="inst_B9D0601B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_same_room_button" x="656" y="640" name="inst_0473C78B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_same_room_button" x="664" y="640" name="inst_0473C78B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_attack_button" x="856" y="640" name="inst_3EEB8376" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_surrender_button" x="1008" y="16" name="inst_F11832D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_run_button" x="472" y="640" name="inst_5777658A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

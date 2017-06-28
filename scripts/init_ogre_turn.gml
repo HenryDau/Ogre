@@ -16,6 +16,12 @@ with(obj_ogre){
     rams_this_turn = 0;
 }
 
+// Show run button if valid
+if (obj_ogre.y >= 672 && obj_ogre.current_movement > 0){
+    obj_run_button.visible = true;
+} else {
+    obj_run_button.visible = false;
+}
 
 var tile = get_tile_at_ogre()
 with (tile){

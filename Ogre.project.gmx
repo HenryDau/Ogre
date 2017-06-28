@@ -34,8 +34,11 @@
       <sprite>sprites\spr_multiple_units</sprite>
       <sprite>sprites\spr_surrender_button</sprite>
       <sprite>sprites\spr_surrender</sprite>
+      <sprite>sprites\spr_game_over</sprite>
       <sprite>sprites\spr_yes_button</sprite>
       <sprite>sprites\spr_no_button</sprite>
+      <sprite>sprites\spr_ok_button</sprite>
+      <sprite>sprites\spr_run_button</sprite>
     </sprites>
     <sprites name="Ogre">
       <sprite>sprites\spr_ogre</sprite>
@@ -63,6 +66,14 @@
       <sprite>sprites\spr_dm</sprite>
       <sprite>sprites\spr_da</sprite>
       <sprite>sprites\spr_dm2</sprite>
+    </sprites>
+    <sprites name="Victory Conditions">
+      <sprite>sprites\spr_complete_ogre_victory</sprite>
+      <sprite>sprites\spr_ogre_victory</sprite>
+      <sprite>sprites\spr_marginal_ogre_victory</sprite>
+      <sprite>sprites\spr_complete_defense_victory</sprite>
+      <sprite>sprites\spr_defense_victory</sprite>
+      <sprite>sprites\spr_marginal_defense_victory</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -99,6 +110,7 @@
     <script>scripts\show_current_unit_details.gml</script>
     <script>scripts\launch_attack.gml</script>
     <script>scripts\get_odds.gml</script>
+    <script>scripts\check_win.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Terrain">
@@ -107,19 +119,24 @@
       <object>objects\obj_blockage</object>
     </objects>
     <objects name="Control">
-      <object>objects\obj_button</object>
+      <objects name="Buttons">
+        <object>objects\obj_button</object>
+        <object>objects\obj_attack_button</object>
+        <object>objects\obj_same_room_button</object>
+        <object>objects\obj_cancel_button</object>
+        <object>objects\obj_surrender_button</object>
+        <object>objects\obj_run_button</object>
+      </objects>
       <object>objects\obj_display</object>
       <object>objects\obj_control</object>
-      <object>objects\obj_same_room_button</object>
-      <object>objects\obj_attack_button</object>
       <object>objects\obj_outline</object>
       <object>objects\obj_result</object>
       <object>objects\obj_dice</object>
       <object>objects\obj_multiple_units</object>
       <object>objects\obj_simple_display</object>
-      <object>objects\obj_surrender_button</object>
-      <object>objects\obj_pause_menu</object>
-      <object>objects\obj_cancel_button</object>
+      <object>objects\obj_surrender_menu</object>
+      <object>objects\obj_game_over</object>
+      <object>objects\obj_victory_display</object>
     </objects>
     <objects name="Defenders">
       <object>objects\obj_heavy_tank</object>

@@ -191,6 +191,7 @@ if (global.turn == "AA" || global.turn == "AM"){
 }
 
 global.paused = false;
+check_win(false);
 </string>
           </argument>
         </arguments>

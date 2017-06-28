@@ -44,6 +44,8 @@ forward_attack = 20;
 f_units = forward_attack;
 
 obj_attack_button.visible = false;
+
+obj_run_button.visible = false;
 </string>
           </argument>
         </arguments>

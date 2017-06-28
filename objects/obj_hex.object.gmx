@@ -206,6 +206,15 @@ if (global.turn == "DS" ){
         global.tile = id;
 
     }
+    
+    if (obj_ogre.y &gt;= 672 &amp;&amp; obj_ogre.current_movement &gt; 0){
+        obj_run_button.visible = true;
+    } else {
+        obj_run_button.visible = false;
+    }
+    
+    check_win(false);
+    
 } else if (global.turn == "DM" || global.turn == "DM2"){
     // Defender turn
     if (sprite_index == spr_valid_hex){
