@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>sprite_index = spr_play_button;  //Set the sprite
-gotoRoom     = game;     //Set the room to goto when pressed
+gotoRoom     = rm_game;     //Set the room to goto when pressed
 
 </string>
           </argument>

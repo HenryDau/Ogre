@@ -27,6 +27,9 @@
     </sprites>
     <sprites name="Control">
       <sprite>sprites\spr_play_button</sprite>
+      <sprite>sprites\spr_settings_button</sprite>
+      <sprite>sprites\spr_code_button</sprite>
+      <sprite>sprites\spr_back_button</sprite>
       <sprite>sprites\spr_delete</sprite>
       <sprite>sprites\spr_done_button</sprite>
       <sprite>sprites\spr_attack_button</sprite>
@@ -159,8 +162,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\game</room>
-    <room>rooms\menu</room>
+    <room>rooms\rm_game</room>
+    <room>rooms\rm_menu</room>
+    <room>rooms\rm_settings</room>
+    <room>rooms\rm_code</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
