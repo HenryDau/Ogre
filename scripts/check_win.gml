@@ -10,6 +10,7 @@ if (instance_number(obj_defender) == 0){
 
 var cp_destroyed = true;
 var attack_points = 0;
+var ogre_destroyed = (instance_number(obj_display) == 1);
 
 with (obj_defender){
 
@@ -17,9 +18,6 @@ with (obj_defender){
     if (sprite_index == spr_cp)
         cp_destroyed = false;
 }
-
-var ogre_destroyed = (instance_number(obj_display) == 1);
-show_debug_message("Ogre things: " + string(instance_number(obj_display)));
 
 if (running && cp_destroyed){
     // Ogre win
@@ -52,13 +50,13 @@ if (!cp_destroyed && ogre_destroyed){
         show_debug_message("Complete Defense win");
         
         var win = instance_create(room_width / 2, room_height / 2, obj_game_over);
-        win.victory_display = spr_defense_victory;
+        win.victory_display = spr_complete_defense_victory;
     } else {
     
         // Defense Victory
         show_debug_message("Defense win");
         
         var win = instance_create(room_width / 2, room_height / 2, obj_game_over);
-        win.victory_display = spr_complete_defense_victory;
+        win.victory_display = spr_defense_victory;
     }
 }

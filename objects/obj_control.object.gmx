@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>/// Define constants and displays
+
+audio_play_sound(background, 10, true);
+
 randomize();
 
 global.unit_selected = "None";

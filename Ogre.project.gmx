@@ -4,7 +4,9 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\background</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="Defenders">
       <sprite>sprites\spr_heavy_tank</sprite>
