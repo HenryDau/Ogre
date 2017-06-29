@@ -26,13 +26,19 @@
       <sprite>sprites\spr_hex_hitbox</sprite>
     </sprites>
     <sprites name="Control">
-      <sprite>sprites\spr_play_button</sprite>
-      <sprite>sprites\spr_settings_button</sprite>
-      <sprite>sprites\spr_code_button</sprite>
-      <sprite>sprites\spr_back_button</sprite>
+      <sprites name="Buttons">
+        <sprite>sprites\spr_play_button</sprite>
+        <sprite>sprites\spr_settings_button</sprite>
+        <sprite>sprites\spr_code_button</sprite>
+        <sprite>sprites\spr_back_button</sprite>
+        <sprite>sprites\spr_done_button</sprite>
+        <sprite>sprites\spr_attack_button</sprite>
+        <sprite>sprites\spr_yes_button</sprite>
+        <sprite>sprites\spr_no_button</sprite>
+        <sprite>sprites\spr_ok_button</sprite>
+        <sprite>sprites\spr_run_button</sprite>
+      </sprites>
       <sprite>sprites\spr_delete</sprite>
-      <sprite>sprites\spr_done_button</sprite>
-      <sprite>sprites\spr_attack_button</sprite>
       <sprite>sprites\spr_miss</sprite>
       <sprite>sprites\spr_disable</sprite>
       <sprite>sprites\spr_kill</sprite>
@@ -40,10 +46,8 @@
       <sprite>sprites\spr_surrender_button</sprite>
       <sprite>sprites\spr_surrender</sprite>
       <sprite>sprites\spr_game_over</sprite>
-      <sprite>sprites\spr_yes_button</sprite>
-      <sprite>sprites\spr_no_button</sprite>
-      <sprite>sprites\spr_ok_button</sprite>
-      <sprite>sprites\spr_run_button</sprite>
+      <sprite>sprites\spr_checkbox</sprite>
+      <sprite>sprites\spr_checkbox_checked</sprite>
     </sprites>
     <sprites name="Ogre">
       <sprite>sprites\spr_ogre</sprite>
@@ -132,6 +136,10 @@
         <object>objects\obj_surrender_button</object>
         <object>objects\obj_run_button</object>
       </objects>
+      <objects name="Settings">
+        <object>objects\obj_quick_combat_setting</object>
+        <object>objects\obj_sound_setting</object>
+      </objects>
       <object>objects\obj_display</object>
       <object>objects\obj_control</object>
       <object>objects\obj_outline</object>
@@ -162,6 +170,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_starter</room>
     <room>rooms\rm_game</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_settings</room>

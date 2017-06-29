@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>/// Define constants and displays
 
-audio_play_sound(background, 10, true);
+if (global.sound_enabled)
+    audio_play_sound(background, 10, true);
 
 randomize();
 

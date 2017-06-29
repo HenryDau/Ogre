@@ -31,7 +31,10 @@ target = global.target;
 global.target = noone;
 global.paused = true;
 
-alarm[0] = (random(1) + 1.5) * room_speed;
+if (global.quick_combat)
+    alarm[0] = 1;
+else
+    alarm[0] = (random(1) + 1.5) * room_speed;
 
 with (obj_result)
     instance_destroy();

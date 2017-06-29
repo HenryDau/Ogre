@@ -12,15 +12,15 @@
   <showcolour>-1</showcolour>
   <code>audio_stop_sound(background);
 
-var play_button = instance_create(room_width, room_height * 5 / 10, obj_button);
+var play_button = instance_create(room_width / 2, room_height * 10 / 20, obj_button);
 play_button.sprite_index = spr_play_button;
 play_button.gotoRoom = rm_game;
 
-var settings_button = instance_create(room_width / 2, room_height * 7 / 10, obj_button);
+var settings_button = instance_create(room_width / 2, room_height * 13 / 20, obj_button);
 settings_button.sprite_index = spr_settings_button;
 settings_button.gotoRoom = rm_settings;
 
-var code_button = instance_create(room_width / 2, room_height * 9 / 10, obj_button);
+var code_button = instance_create(room_width / 2, room_height * 16 / 20, obj_button);
 code_button.sprite_index = spr_code_button;
 code_button.gotoRoom = rm_code;</code>
   <enableViews>0</enableViews>
