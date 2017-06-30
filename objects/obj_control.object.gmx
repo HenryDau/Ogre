@@ -252,6 +252,12 @@ if (global.turn == "DS"){
             <kind>1</kind>
             <string>/// The game
 
+/*if (!global.paused &amp;&amp; keyboard_check(vk_escape)){
+    instance_create(room_width / 2, room_height / 2, obj_settings)
+    
+    global.paused = true;
+}*/
+
 if (global.turn == "AM"){
     //show_debug_message("Attacker");
     

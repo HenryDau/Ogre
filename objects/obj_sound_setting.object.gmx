@@ -3,7 +3,7 @@
   <spriteName>spr_checkbox</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -56,8 +56,14 @@
 
 if (global.sound_enabled == true){
     sprite_index = spr_checkbox_checked;
+    
+    if (room == rm_game){
+        audio_play_sound(background, 10, true);
+    }
 } else {
     sprite_index = spr_checkbox;
+    
+    audio_stop_sound(background);
 }
 </string>
           </argument>

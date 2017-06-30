@@ -3,7 +3,7 @@
   <spriteName>spr_sliding_bar</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -86,7 +86,6 @@ if (!bar.clicked &amp;&amp; value_to_change != floor(bar.percentage * (MAX_VALUE
 
     var bar_scale_factor = (bar.max_x - bar.min_x);
     bar.x = (value_to_change - MIN_VALUE) / (MAX_VALUE - MIN_VALUE) * bar_scale_factor + bar.min_x;
-    //show_debug_message("Changing dynamically");
     
 } else {
     value_to_change = floor(bar.percentage * (MAX_VALUE - MIN_VALUE) + MIN_VALUE);

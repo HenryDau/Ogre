@@ -3,7 +3,7 @@
   <spriteName>spr_sliding_indicator</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-3</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -54,7 +54,14 @@ percentage = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (clicked &amp;&amp; mouse_check_button(mb_left)){
+            <string>
+if (!mouse_check_button(mb_left)){
+    clicked = false;
+    
+    global.slider_clicked = false;
+}
+
+if (clicked &amp;&amp; mouse_check_button(mb_left)){
     if (mouse_x &gt; max_x){
         x = max_x;
     } else if (mouse_x &lt; min_x){
@@ -87,11 +94,11 @@ percentage = (x - min_x) / (max_x - min_x);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (obj_sliding_bar_box){
+            <string>/*with (obj_sliding_bar_box){
     clicked = false;
 }
 
-global.slider_clicked = false;
+global.slider_clicked = false;*/
 </string>
           </argument>
         </arguments>

@@ -66,6 +66,7 @@
         <sprite>sprites\spr_no_button</sprite>
         <sprite>sprites\spr_ok_button</sprite>
         <sprite>sprites\spr_run_button</sprite>
+        <sprite>sprites\spr_pause_button</sprite>
       </sprites>
       <sprites name="Victory Conditions">
         <sprite>sprites\spr_complete_ogre_victory</sprite>
@@ -84,6 +85,7 @@
         <sprite>sprites\spr_checkbox</sprite>
         <sprite>sprites\spr_number_display</sprite>
         <sprite>sprites\spr_incorrect</sprite>
+        <sprite>sprites\spr_warning</sprite>
       </sprites>
       <sprite>sprites\spr_delete</sprite>
       <sprite>sprites\spr_miss</sprite>
@@ -93,6 +95,7 @@
       <sprite>sprites\spr_surrender_button</sprite>
       <sprite>sprites\spr_surrender</sprite>
       <sprite>sprites\spr_game_over</sprite>
+      <sprite>sprites\spr_options</sprite>
     </sprites>
     <sprites name="Text">
       <sprite>sprites\spr_adv_settings_explanation</sprite>
@@ -151,6 +154,7 @@
         <object>objects\obj_surrender_button</object>
         <object>objects\obj_run_button</object>
         <object>objects\obj_code_button</object>
+        <object>objects\obj_pause_button</object>
       </objects>
       <objects name="Settings">
         <object>objects\obj_quick_combat_setting</object>
@@ -159,6 +163,8 @@
         <object>objects\obj_sliding_bar_box</object>
         <object>objects\obj_restore_defaults_button</object>
         <object>objects\obj_number_display</object>
+        <object>objects\obj_settings</object>
+        <object>objects\obj_warning</object>
       </objects>
       <object>objects\obj_display</object>
       <object>objects\obj_control</object>
