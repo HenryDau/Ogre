@@ -18,6 +18,12 @@ var settings_button = instance_create(room_width / 2, room_height * 7 / 10, obj_
 settings_button.sprite_index = spr_settings_button;
 settings_button.gotoRoom = rm_settings;*/
 
+var explanation = instance_create(room_width / 2, room_height * 7 / 20, obj_text_holder);
+explanation.sprite_index = spr_code_explanation;
+
+var submit_button = instance_create(room_width / 2, room_height * 7 / 10, obj_code_button);
+
+
 var back_button = instance_create(room_width / 2, room_height * 9 / 10, obj_button);
 back_button.sprite_index = spr_back_button;
 back_button.gotoRoom = rm_menu;</code>
@@ -41,7 +47,7 @@ back_button.gotoRoom = rm_menu;</code>
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="title" x="290" y="50" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="title" x="290" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>

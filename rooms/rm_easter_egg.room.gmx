@@ -10,14 +10,11 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>/// Set settings
-global.quick_combat = false;
-global.sound_enabled = true;
-global.armor_units = 12;
-global.infantry_units = 20;
-global.forward_units = 20;
-
-room_goto(rm_code);</code>
+  <code>var back_button = instance_create(50, 25, obj_button);
+back_button.sprite_index = spr_back_button;
+back_button.image_xscale = .5;
+back_button.image_yscale = .5;
+back_button.gotoRoom = rm_menu;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -38,7 +35,7 @@ room_goto(rm_code);</code>
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="dad" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>

@@ -42,9 +42,15 @@ global.paused = false;
 MAX_WIDTH = view_wview;
 MAX_HEIGHT = view_hview;
 
-infantry_units = 20;
-armor_units = 12;
-forward_attack = 20;
+if (1){
+    infantry_units = global.infantry_units;
+    armor_units = global.armor_units;
+    forward_attack = global.forward_units;
+} else {
+    infantry_units = 20;
+    armor_units = 12;
+    forward_attack = 20;
+}
 f_units = forward_attack;
 
 obj_attack_button.visible = false;

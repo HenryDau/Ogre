@@ -4,7 +4,7 @@ var y_start = 300;
 var offset = 5;
 var text_offset = 32;
 
-draw_text_color(x_start, y_start - offset - 32, "Ogre Deatils", c_black, c_black, c_black, c_black, 1);
+draw_text_color(x_start, y_start - offset - 32, "Ogre Details", c_black, c_black, c_black, c_black, 1);
 draw_text_color(x_start, y_start - offset, "Missiles: ", c_black, c_black, c_black, c_black, 1);
 draw_text_color(x_start, y_start - offset + 32, "Main Batteries: ", c_black, c_black, c_black, c_black, 1);
 draw_text_color(x_start, y_start - offset + 32 * 2, "Secondary Batteries: ", c_black, c_black, c_black, c_black, 1);

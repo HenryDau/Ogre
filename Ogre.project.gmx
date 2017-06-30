@@ -18,37 +18,6 @@
       <sprite>sprites\spr_infantry_2</sprite>
       <sprite>sprites\spr_infantry_3</sprite>
     </sprites>
-    <sprites name="Terrain">
-      <sprite>sprites\spr_valid_hex</sprite>
-      <sprite>sprites\spr_blockage</sprite>
-      <sprite>sprites\spr_hex</sprite>
-      <sprite>sprites\spr_crater</sprite>
-      <sprite>sprites\spr_hex_hitbox</sprite>
-    </sprites>
-    <sprites name="Control">
-      <sprites name="Buttons">
-        <sprite>sprites\spr_play_button</sprite>
-        <sprite>sprites\spr_settings_button</sprite>
-        <sprite>sprites\spr_code_button</sprite>
-        <sprite>sprites\spr_back_button</sprite>
-        <sprite>sprites\spr_done_button</sprite>
-        <sprite>sprites\spr_attack_button</sprite>
-        <sprite>sprites\spr_yes_button</sprite>
-        <sprite>sprites\spr_no_button</sprite>
-        <sprite>sprites\spr_ok_button</sprite>
-        <sprite>sprites\spr_run_button</sprite>
-      </sprites>
-      <sprite>sprites\spr_delete</sprite>
-      <sprite>sprites\spr_miss</sprite>
-      <sprite>sprites\spr_disable</sprite>
-      <sprite>sprites\spr_kill</sprite>
-      <sprite>sprites\spr_multiple_units</sprite>
-      <sprite>sprites\spr_surrender_button</sprite>
-      <sprite>sprites\spr_surrender</sprite>
-      <sprite>sprites\spr_game_over</sprite>
-      <sprite>sprites\spr_checkbox</sprite>
-      <sprite>sprites\spr_checkbox_checked</sprite>
-    </sprites>
     <sprites name="Ogre">
       <sprite>sprites\spr_ogre</sprite>
       <sprite>sprites\spr_missile</sprite>
@@ -57,6 +26,13 @@
       <sprite>sprites\spr_antipersonnel</sprite>
       <sprite>sprites\spr_tread</sprite>
       <sprite>sprites\spr_outline</sprite>
+    </sprites>
+    <sprites name="Terrain">
+      <sprite>sprites\spr_valid_hex</sprite>
+      <sprite>sprites\spr_blockage</sprite>
+      <sprite>sprites\spr_hex</sprite>
+      <sprite>sprites\spr_crater</sprite>
+      <sprite>sprites\spr_hex_hitbox</sprite>
     </sprites>
     <sprites name="Dice">
       <sprite>sprites\spr_die_rolling</sprite>
@@ -67,26 +43,65 @@
       <sprite>sprites\spr_five</sprite>
       <sprite>sprites\spr_six</sprite>
     </sprites>
-    <sprites name="Turn Display">
-      <sprite>sprites\spr_ds</sprite>
-      <sprite>sprites\spr_as</sprite>
-      <sprite>sprites\spr_am</sprite>
-      <sprite>sprites\spr_aa</sprite>
-      <sprite>sprites\spr_dm</sprite>
-      <sprite>sprites\spr_da</sprite>
-      <sprite>sprites\spr_dm2</sprite>
+    <sprites name="Control">
+      <sprites name="Turn Display">
+        <sprite>sprites\spr_ds</sprite>
+        <sprite>sprites\spr_as</sprite>
+        <sprite>sprites\spr_am</sprite>
+        <sprite>sprites\spr_aa</sprite>
+        <sprite>sprites\spr_dm</sprite>
+        <sprite>sprites\spr_da</sprite>
+        <sprite>sprites\spr_dm2</sprite>
+      </sprites>
+      <sprites name="Buttons">
+        <sprite>sprites\spr_play_button</sprite>
+        <sprite>sprites\spr_settings_button</sprite>
+        <sprite>sprites\spr_code_button</sprite>
+        <sprite>sprites\spr_adv_settings_button</sprite>
+        <sprite>sprites\spr_back_button</sprite>
+        <sprite>sprites\spr_restore_defaults_button</sprite>
+        <sprite>sprites\spr_done_button</sprite>
+        <sprite>sprites\spr_attack_button</sprite>
+        <sprite>sprites\spr_yes_button</sprite>
+        <sprite>sprites\spr_no_button</sprite>
+        <sprite>sprites\spr_ok_button</sprite>
+        <sprite>sprites\spr_run_button</sprite>
+      </sprites>
+      <sprites name="Victory Conditions">
+        <sprite>sprites\spr_complete_ogre_victory</sprite>
+        <sprite>sprites\spr_ogre_victory</sprite>
+        <sprite>sprites\spr_marginal_ogre_victory</sprite>
+        <sprite>sprites\spr_complete_defense_victory</sprite>
+        <sprite>sprites\spr_defense_victory</sprite>
+        <sprite>sprites\spr_marginal_defense_victory</sprite>
+      </sprites>
+      <sprites name="Settings">
+        <sprites name="Sliding Bar">
+          <sprite>sprites\spr_sliding_bar</sprite>
+          <sprite>sprites\spr_sliding_indicator</sprite>
+        </sprites>
+        <sprite>sprites\spr_checkbox_checked</sprite>
+        <sprite>sprites\spr_checkbox</sprite>
+        <sprite>sprites\spr_number_display</sprite>
+        <sprite>sprites\spr_incorrect</sprite>
+      </sprites>
+      <sprite>sprites\spr_delete</sprite>
+      <sprite>sprites\spr_miss</sprite>
+      <sprite>sprites\spr_disable</sprite>
+      <sprite>sprites\spr_kill</sprite>
+      <sprite>sprites\spr_multiple_units</sprite>
+      <sprite>sprites\spr_surrender_button</sprite>
+      <sprite>sprites\spr_surrender</sprite>
+      <sprite>sprites\spr_game_over</sprite>
     </sprites>
-    <sprites name="Victory Conditions">
-      <sprite>sprites\spr_complete_ogre_victory</sprite>
-      <sprite>sprites\spr_ogre_victory</sprite>
-      <sprite>sprites\spr_marginal_ogre_victory</sprite>
-      <sprite>sprites\spr_complete_defense_victory</sprite>
-      <sprite>sprites\spr_defense_victory</sprite>
-      <sprite>sprites\spr_marginal_defense_victory</sprite>
+    <sprites name="Text">
+      <sprite>sprites\spr_adv_settings_explanation</sprite>
+      <sprite>sprites\spr_code_explanation</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title</background>
+    <background>background\dad</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -135,10 +150,15 @@
         <object>objects\obj_cancel_button</object>
         <object>objects\obj_surrender_button</object>
         <object>objects\obj_run_button</object>
+        <object>objects\obj_code_button</object>
       </objects>
       <objects name="Settings">
         <object>objects\obj_quick_combat_setting</object>
         <object>objects\obj_sound_setting</object>
+        <object>objects\obj_sliding_bar</object>
+        <object>objects\obj_sliding_bar_box</object>
+        <object>objects\obj_restore_defaults_button</object>
+        <object>objects\obj_number_display</object>
       </objects>
       <object>objects\obj_display</object>
       <object>objects\obj_control</object>
@@ -150,6 +170,7 @@
       <object>objects\obj_surrender_menu</object>
       <object>objects\obj_game_over</object>
       <object>objects\obj_victory_display</object>
+      <object>objects\obj_text_holder</object>
     </objects>
     <objects name="Defenders">
       <object>objects\obj_heavy_tank</object>
@@ -174,7 +195,9 @@
     <room>rooms\rm_game</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_settings</room>
+    <room>rooms\rm_advanced_settings</room>
     <room>rooms\rm_code</room>
+    <room>rooms\rm_easter_egg</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

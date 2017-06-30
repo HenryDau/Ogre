@@ -14,13 +14,36 @@
 play_button.sprite_index = spr_play_button;
 play_button.gotoRoom = rm_game;*/
 
-var settings_button = instance_create(room_width / 2, room_height * 14 / 20, obj_button);
-settings_button.sprite_index = spr_adv_settings_button;
-settings_button.gotoRoom = rm_advanced_settings;
+global.slider_clicked = false;
+
+var defaults_button = instance_create(room_width / 2, room_height * 15 / 20, obj_restore_defaults_button);
+
+var explanation = instance_create(room_width / 2, room_height * 8 / 20, obj_text_holder);
+explanation.sprite_index = spr_adv_settings_explanation;
+
+var slider_offset = 50;
+
+var infantry_unit_slider = instance_create(room_width / 2 + slider_offset, room_height * 10 / 20, obj_sliding_bar);
+infantry_unit_slider.value_to_change = global.infantry_units;
+infantry_unit_slider.text = "Infantry Units: ";
+infantry_unit_slider.offset = 250;
+infantry_unit_slider.mode = 1;
+
+var armor_unit_slider = instance_create(room_width / 2 + slider_offset, room_height * 11 / 20, obj_sliding_bar);
+armor_unit_slider.value_to_change = global.armor_units;
+armor_unit_slider.text = "Armor Units: ";
+armor_unit_slider.offset = 250;
+armor_unit_slider.mode = 2;
+
+var forward_unit_slider = instance_create(room_width / 2 + slider_offset, room_height * 12 / 20, obj_sliding_bar);
+forward_unit_slider.value_to_change = global.forward_units;
+forward_unit_slider.text = "Forward Units: ";
+forward_unit_slider.offset = 250;
+forward_unit_slider.mode = 3;
 
 var back_button = instance_create(room_width / 2, room_height * 18 / 20, obj_button);
 back_button.sprite_index = spr_back_button;
-back_button.gotoRoom = rm_menu;</code>
+back_button.gotoRoom = rm_settings;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -60,10 +83,7 @@ back_button.gotoRoom = rm_menu;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
-  <instances>
-    <instance objName="obj_quick_combat_setting" x="576" y="352" name="inst_9AC3924B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound_setting" x="576" y="416" name="inst_7DB2BD28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-  </instances>
+  <instances/>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
