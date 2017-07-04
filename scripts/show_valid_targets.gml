@@ -14,8 +14,21 @@ if (global.turn == "AA"){
 } else if (global.turn == "DA"){
     with(obj_defender){
         var tile = get_tile_at_ogre();
+        
+        var is_howitzer = false;
+        
+        with (obj_defender){
+            if (sprite_index == spr_howitzer){
+                is_howitzer = true;
+            }
+        } 
+        
         with (tile){
-            show_valid_moves(8);
+            if (is_howitzer){
+                show_valid_moves(8);
+            } else {
+                show_valid_moves(4);
+            }
         }
     }
 }

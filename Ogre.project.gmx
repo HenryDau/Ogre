@@ -29,6 +29,7 @@
     </sprites>
     <sprites name="Terrain">
       <sprite>sprites\spr_valid_hex</sprite>
+      <sprite>sprites\spr_target_hex</sprite>
       <sprite>sprites\spr_blockage</sprite>
       <sprite>sprites\spr_hex</sprite>
       <sprite>sprites\spr_crater</sprite>
@@ -52,6 +53,14 @@
         <sprite>sprites\spr_dm</sprite>
         <sprite>sprites\spr_da</sprite>
         <sprite>sprites\spr_dm2</sprite>
+        <sprites name="Buttons">
+          <sprite>sprites\spr_am_button</sprite>
+          <sprite>sprites\spr_aa_button</sprite>
+          <sprite>sprites\spr_da_button</sprite>
+          <sprite>sprites\spr_dm2_button</sprite>
+          <sprite>sprites\spr_dm_button</sprite>
+          <sprite>sprites\spr_turn_button_outline</sprite>
+        </sprites>
       </sprites>
       <sprites name="Buttons">
         <sprite>sprites\spr_play_button</sprite>
@@ -61,6 +70,7 @@
         <sprite>sprites\spr_back_button</sprite>
         <sprite>sprites\spr_restore_defaults_button</sprite>
         <sprite>sprites\spr_done_button</sprite>
+        <sprite>sprites\spr_complete_done_button</sprite>
         <sprite>sprites\spr_attack_button</sprite>
         <sprite>sprites\spr_yes_button</sprite>
         <sprite>sprites\spr_no_button</sprite>
@@ -85,7 +95,6 @@
         <sprite>sprites\spr_checkbox</sprite>
         <sprite>sprites\spr_number_display</sprite>
         <sprite>sprites\spr_incorrect</sprite>
-        <sprite>sprites\spr_warning</sprite>
       </sprites>
       <sprite>sprites\spr_delete</sprite>
       <sprite>sprites\spr_miss</sprite>
@@ -131,6 +140,7 @@
       <script>scripts\get_attack_value.gml</script>
       <script>scripts\invalidate_selected.gml</script>
       <script>scripts\next_turn.gml</script>
+      <script>scripts\create_turn_displays.gml</script>
     </scripts>
     <script>scripts\show_ogre_details.gml</script>
     <script>scripts\create_ogre_displays.gml</script>
@@ -149,7 +159,7 @@
       <objects name="Buttons">
         <object>objects\obj_button</object>
         <object>objects\obj_attack_button</object>
-        <object>objects\obj_same_room_button</object>
+        <object>objects\obj_done_button</object>
         <object>objects\obj_cancel_button</object>
         <object>objects\obj_surrender_button</object>
         <object>objects\obj_run_button</object>
@@ -164,9 +174,7 @@
         <object>objects\obj_restore_defaults_button</object>
         <object>objects\obj_number_display</object>
         <object>objects\obj_settings</object>
-        <object>objects\obj_warning</object>
       </objects>
-      <object>objects\obj_display</object>
       <object>objects\obj_control</object>
       <object>objects\obj_outline</object>
       <object>objects\obj_result</object>
@@ -177,6 +185,7 @@
       <object>objects\obj_game_over</object>
       <object>objects\obj_victory_display</object>
       <object>objects\obj_text_holder</object>
+      <object>objects\obj_turn_display</object>
     </objects>
     <objects name="Defenders">
       <object>objects\obj_heavy_tank</object>
@@ -194,6 +203,7 @@
       <object>objects\obj_secondary_battery</object>
       <object>objects\obj_antipersonnel</object>
       <object>objects\obj_tread</object>
+      <object>objects\obj_display</object>
     </objects>
   </objects>
   <rooms name="rooms">

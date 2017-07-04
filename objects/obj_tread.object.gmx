@@ -28,6 +28,8 @@
             <string>this_unit = "Tread";
 selected = false;
 has_shot = false;
+outline = instance_create(x,y,obj_outline);
+outline.visible = false;
 </string>
           </argument>
         </arguments>
@@ -53,7 +55,13 @@ has_shot = false;
             <string>/// Set target if defender attack phase
 
 if (global.turn == "DA"){
+
+    if (global.target != noone)
+            global.target.outline.visible = false;
+    
     global.target = id;
+    
+    outline.visible = true;
 }
 </string>
           </argument>

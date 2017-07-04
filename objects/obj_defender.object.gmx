@@ -136,10 +136,26 @@ else {
     
     if (global.turn == "AA"){
         if (tile.sprite_index == spr_valid_hex){
+        
+            if (global.target != noone){
+                var old_tile = get_tile_at(global.target.x, global.target.y);
+                old_tile.sprite_index = spr_valid_hex;
+            }
+            
             global.target = id;
+            var tile = get_tile_at(global.target.x, global.target.y);
+            tile.sprite_index = spr_target_hex;
+            
             if (global.combined_attack_range != 0){
                 obj_attack_button.visible = true;
             }
+        } else {
+        
+            var old_tile = get_tile_at(global.target.x, global.target.y);
+            old_tile.sprite_index = spr_valid_hex;
+            
+            global.target = noone;
+            obj_attack_button.visible = false;
         }
     }
     

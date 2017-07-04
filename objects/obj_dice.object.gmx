@@ -99,10 +99,6 @@ if (global.turn == "AA" || global.turn == "AM"){
         }
         global.defender = noone;
         
-        /*if (global.turn == "AM"){
-            with (obj_multiple_units)
-                instance_destroy();
-        }*/
         
     } else if (roll &lt;= disable + kill){
     
@@ -128,6 +124,7 @@ if (global.turn == "AA" || global.turn == "AM"){
                 }
             }
         } else {
+        
             //show_debug_message("Disabled");
             if (target.disabled){
                 with (target){

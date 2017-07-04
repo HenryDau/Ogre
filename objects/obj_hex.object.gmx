@@ -36,7 +36,7 @@ cost = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -53,41 +53,37 @@ cost = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//show_debug_message(string(northeast));
-//draw=true;
+            <string>/// Show valid moves
 
-if (global.turn == "DS" ){
-    if (global.unit_selected == "Delete"){
-        if (has_unit){
-            var unit = instance_place(x, y, obj_defender);
-            with(unit)
-                instance_destroy();
-        }
-    } else {
-        if (!has_unit &amp;&amp; sprite_index == spr_valid_hex &amp;&amp; global.unit_selected != "None"){
-            instance_create(x,y,get_selected_unit());
-            has_unit = true;
-        }
-    }
+var unit = instance_place(x, y, obj_defender);
+show_valid_moves(unit.current_movement);
+global.defender = unit;
+global.tile = id;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Attacker Movement Turn
 
-} else if (global.turn == "AS"){
-    if (global.unit_selected == "Delete"){
-        if (has_unit){
-            var unit = instance_place(x, y, obj_ogre);
-            if (unit != noone){     // Have to check because now defenders are on the board
-                with(unit)
-                    instance_destroy();
-                sprite_index = spr_hex;
-            }
-        }
-    } else {
-        if (!has_unit &amp;&amp; sprite_index == spr_valid_hex &amp;&amp; global.unit_selected != "None"){
-            obj_hex.sprite_index = spr_hex;
-            instance_create(x,y,get_selected_unit());
-            has_unit = true;
-        }
-    }
-} else if (global.turn == "AM"){
+if (global.turn == "AM"){
 
     // Attacker turn
     
@@ -204,7 +200,7 @@ if (global.turn == "DS" ){
         }
         
         global.tile = id;
-
+    
     }
     
     if (obj_ogre.y &gt;= 672 &amp;&amp; obj_ogre.current_movement &gt; 0){
@@ -214,7 +210,63 @@ if (global.turn == "DS" ){
     }
     
     check_win(false);
-    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//show_debug_message(string(northeast));
+//draw=true;
+
+if (global.turn == "DS" ){
+    if (global.unit_selected == "Delete"){
+        if (has_unit){
+            var unit = instance_place(x, y, obj_defender);
+            with(unit)
+                instance_destroy();
+        }
+    } else {
+        if (!has_unit &amp;&amp; sprite_index == spr_valid_hex &amp;&amp; global.unit_selected != "None"){
+            instance_create(x,y,get_selected_unit());
+            has_unit = true;
+        }
+    }
+
+} else if (global.turn == "AS"){
+    if (global.unit_selected == "Delete"){
+        if (has_unit){
+            var unit = instance_place(x, y, obj_ogre);
+            if (unit != noone){     // Have to check because now defenders are on the board
+                with(unit)
+                    instance_destroy();
+                sprite_index = spr_hex;
+            }
+        }
+    } else {
+        if (!has_unit &amp;&amp; sprite_index == spr_valid_hex &amp;&amp; global.unit_selected != "None"){
+            obj_hex.sprite_index = spr_hex;
+            instance_create(x,y,get_selected_unit());
+            has_unit = true;
+        }
+    }  
 } else if (global.turn == "DM" || global.turn == "DM2"){
     // Defender turn
     if (sprite_index == spr_valid_hex){
@@ -262,9 +314,13 @@ if (global.turn == "DS" ){
                     
                     // If the unit still has moves left, show those moves
                     if (global.defender.current_movement &gt; 1){
+                        
                         show_valid_moves(global.defender.current_movement);
                         global.tile = id;
                     }
+                    
+                    // Clear the defender in case it was destroyed
+                    //global.defender = noone;
                     
                     // Tell the tile it has a unit
                     has_unit = true;
@@ -316,16 +372,17 @@ if (global.turn == "DS" ){
             cost = 0;
             sprite_index = spr_hex;
         }
-        //if (has_unit){
-            // There is a unit, is it an ogre or defender?
+        
+        // There is a unit, is it an ogre or defender?
         var unit = instance_place(x, y, obj_defender);
         //show_debug_message("Hex 161: Defender " + string(unit.disabled)); 
         if (unit != noone &amp;&amp; !unit.disabled){
              
-            // If this is a defender
-            show_valid_moves(unit.current_movement);
-            global.defender = unit;
-            global.tile = id;
+            alarm[0] = 1;
+            // If this is a defender (Delay with alarm, mostly for infantry stacking)
+            //show_valid_moves(unit.current_movement);
+            //global.defender = unit;
+            //global.tile = id;
         }
     }
 }

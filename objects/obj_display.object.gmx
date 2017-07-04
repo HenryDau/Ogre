@@ -60,6 +60,11 @@ outline.visible = false;
     }
 } else {
     image_blend = make_color_hsv(0, 0, 255);
+    
+    /*if (global.target != noone &amp;&amp; global.target == id)
+        outline.visible = true;
+    else
+        outline.visible = false;*/
 }
 </string>
           </argument>
@@ -140,7 +145,12 @@ outline.visible = false;
             }
         }
     } else if (global.turn == "DA"){
+    
+        if (global.target != noone)
+            global.target.outline.visible = false;
+    
         global.target = id;
+        outline.visible = true;
     }
 }
 </string>

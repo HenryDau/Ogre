@@ -32,6 +32,8 @@ if (global.turn == "DS"){
     global.unit_selected = "Ogre";
     global.defender = noone;
     
+    create_turn_displays();
+    
     with (obj_display)
         instance_destroy();
     

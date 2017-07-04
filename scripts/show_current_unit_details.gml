@@ -1,5 +1,8 @@
-var x_start = 400;
-var y_start = 50;
+//var x_start = 400;
+//var y_start = 50;
+
+var x_start = argument[0];
+var y_start = argument[1];
 
 if (get_selected_unit() == obj_ogre){
     

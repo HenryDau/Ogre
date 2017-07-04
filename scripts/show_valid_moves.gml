@@ -1,21 +1,37 @@
 
 var movement = argument[0];
 
-if (cost > movement){
-} else {
+if (cost <= movement){
 
     if (global.turn == "DA"){
+    
+        var is_howitzer = false;
+        with (obj_defender){
+            if (sprite_index == spr_howitzer){
+                is_howitzer = true;
+                break;
+            }
+        }
+    
+        var range = 4;
+        
+        if (is_howitzer)
+            range = 8;
+        
         var unit = instance_place(x,y,obj_defender);
         if (unit != noone){
-            if (8 - movement <= unit.range && !unit.disabled)
+            if (range - movement <= unit.range && !unit.disabled)
                 sprite_index = spr_valid_hex;
             else
                 sprite_index = spr_hex;
         }
     } else if (global.turn == "AM" && movement > 0){
-        if (instance_number(obj_multiple_units) > 0 && obj_ogre.rams_this_turn < obj_ogre.MAX_RAMS){
+    
+        var infantry = instance_place(x,y,obj_infantry);
+        if (instance_number(obj_multiple_units) > 0 && (obj_ogre.rams_this_turn < obj_ogre.MAX_RAMS)){
             sprite_index = spr_valid_hex;
         }
+
     } else if (global.turn == "AA"){
         if (instance_number(obj_multiple_units) > 0){
             sprite_index = spr_valid_hex;

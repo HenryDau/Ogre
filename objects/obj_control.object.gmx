@@ -166,9 +166,9 @@ if (global.turn == "DS"){
                           - instance_number(obj_infantry) - instance_number(obj_cp));
     
     if (instance_number(obj_cp) &gt; 0)
-        obj_same_room_button.visible = true;
+        obj_done_button.visible = true;
     else   
-        obj_same_room_button.visible = false;
+        obj_done_button.visible = false;
         
     if (global.unit_selected != "None"){
     
@@ -212,9 +212,9 @@ if (global.turn == "DS"){
     // Attacker setup
     
     if (instance_number(obj_ogre) &gt; 0)
-        obj_same_room_button.visible = true;
+        obj_done_button.visible = true;
     else   
-        obj_same_room_button.visible = false;
+        obj_done_button.visible = false;
     
     if (global.unit_selected != "Delete"){
         if (instance_number(obj_ogre) &gt; 0){
@@ -265,15 +265,9 @@ if (global.turn == "AM"){
         
     } else {
         obj_hex.sprite_index = spr_hex;
-        /*var tile = get_tile_at_ogre();
-        tile.cost = obj_ogre.current_movement - 1;
-        if (tile.cost &gt;= 0)
-            tile.sprite_index = spr_valid_hex;*/
     }
 
 } else if (global.turn == "AA"){
-    //if (global.unit_selected != "None" &amp;&amp; global.unit_selected != "Ogre")
-    //    show_valid_targets();
 
 } else if (global.turn == "DM" || global.turn == "DM2"){
     // Defender movement
@@ -351,6 +345,34 @@ if (global.turn == "AM"){
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="51">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*if (!global.paused){
+    global.selected_unit = noone;
+    global.defender = noone;
+    global.targe = noone;
+    global.unit_selected = "None";
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -371,10 +393,12 @@ if (global.turn == "AM"){
             <string>/// Draw the game
 //var vertical_index = 0;
 
+var turn_display_y_offset = -60;
+
 if (global.turn == "DS"){
     // Defender setup
     
-    draw_sprite(spr_ds, -1, x_start + 200, y_start - 76);
+    draw_sprite(spr_ds, -1, x_start + 200, y_start + turn_display_y_offset);
     
     // Displays for selecting defense units
     draw_text_color(x_start + 32, y_start - offset, "Heavy Tank", c_black, c_black, c_black, c_black, 1);
@@ -421,7 +445,7 @@ if (global.turn == "DS"){
 } else if (global.turn == "AS"){
     // Attacker setup
     
-    draw_sprite(spr_as, -1, x_start + 200, y_start - 76);
+    draw_sprite(spr_as, -1, x_start + 200, y_start + turn_display_y_offset);
     
     draw_text_color(x_start + 32, y_start - offset, "Ogre Mk III", c_black, c_black, c_black, c_black, 1);
     draw_text_color(x_start + 32, y_start - offset + 32, "Delete", c_black, c_black, c_black, c_black, 1);
@@ -435,16 +459,16 @@ if (global.turn == "DS"){
     // Draw the game
     show_ogre_details();
     if (global.turn == "AA"){
-        draw_sprite(spr_aa, -1, x_start + 200, y_start - 76);
+        draw_sprite(spr_aa, -1, x_start + 200, y_start + turn_display_y_offset);
         //draw_text_color(x_start + 200, y_start  + 200, "Combined Range: " + string(global.combined_attack_range), c_black, c_black, c_black, c_black, 1);
     } else if (global.turn == "AM")
-        draw_sprite(spr_am, -1, x_start + 200, y_start - 76);
+        draw_sprite(spr_am, -1, x_start + 200, y_start + turn_display_y_offset);
     else if (global.turn == "DM")
-        draw_sprite(spr_dm, -1, x_start + 200, y_start - 76);
+        draw_sprite(spr_dm, -1, x_start + 200, y_start + turn_display_y_offset);
     else if (global.turn == "DA")
-        draw_sprite(spr_da, -1, x_start + 200, y_start - 76);
+        draw_sprite(spr_da, -1, x_start + 200, y_start + turn_display_y_offset);
     else if (global.turn == "DM2")
-        draw_sprite(spr_dm2, -1, x_start + 200, y_start - 76);
+        draw_sprite(spr_dm2, -1, x_start + 200, y_start + turn_display_y_offset);
 }
 
 // Show selected unit
@@ -453,7 +477,10 @@ draw_text_color(x_start + 32, y_start - offset - 64, global.unit_selected, c_bla
 
 if (global.turn != "DS" &amp;&amp; global.turn != "AS"){
     // Show current unit details
-    show_current_unit_details();
+    show_current_unit_details(400, 50);
+} else {
+    // Move unit details in setup mode
+    show_current_unit_details(400, 500);
 }
 
 if (global.turn == "AA" || global.turn == "DA"){
@@ -543,7 +570,7 @@ if (global.turn == "DA"){
         }
     }
     if (global.target != noone &amp;&amp; selected_units &gt; 1 &amp;&amp; global.target.sprite_index == spr_tread)
-        draw_text(650, 640, "Can not attack treads with multiple units");    
+        draw_text(650, 550, "Can not attack treads with multiple units");    
 }
 
 

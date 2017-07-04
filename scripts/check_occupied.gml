@@ -7,7 +7,7 @@ if (global.turn == "AM"){
     if (tile == get_tile_at_ogre() && instance_number(obj_multiple_units) == 0)
         tile.sprite_index = spr_hex;
     else {
-        if (obj_ogre.rams_this_turn >= obj_ogre.MAX_RAMS && place_meeting(x_dst, y_dst, obj_defender))
+        if ((obj_ogre.rams_this_turn >= obj_ogre.MAX_RAMS && place_meeting(x_dst, y_dst, obj_defender)) && !place_meeting(x_dst, y_dst, obj_infantry))
             tile.sprite_index = spr_hex;
         else
             tile.sprite_index = spr_valid_hex;

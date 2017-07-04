@@ -21,6 +21,8 @@ if (global.turn == "AA"){
  
 } else if (global.turn == "DA"){
 
+    global.target.outline.visible = false;
+
     with (obj_defender){
         if (selected){
             has_shot = true;
