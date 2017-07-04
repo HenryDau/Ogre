@@ -14,7 +14,15 @@
 back_button.sprite_index = spr_back_button;
 back_button.image_xscale = .5;
 back_button.image_yscale = .5;
-back_button.gotoRoom = rm_menu;</code>
+back_button.gotoRoom = rm_menu;
+
+var text = instance_create(700, 50, obj_text_holder);
+text.sprite_index = spr_sound_control;
+
+var pic = instance_create(0, 400, obj_text_holder);
+pic.sprite_index = spr_picture;
+
+audio_play_sound(sound_dad, 1, false);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

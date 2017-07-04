@@ -145,8 +145,11 @@ if (mode == 1){
             <kind>1</kind>
             <string>draw_self();
 
+draw_set_color(c_white);
+
 draw_text(x - offset, y - 5, text + string(value_to_change));
 
+draw_set_color(c_black);
 </string>
           </argument>
         </arguments>

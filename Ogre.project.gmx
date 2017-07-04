@@ -6,6 +6,7 @@
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\background</sound>
+    <sound>sound\sound_dad</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Defenders">
@@ -95,6 +96,7 @@
         <sprite>sprites\spr_checkbox</sprite>
         <sprite>sprites\spr_number_display</sprite>
         <sprite>sprites\spr_incorrect</sprite>
+        <sprite>sprites\spr_picture</sprite>
       </sprites>
       <sprite>sprites\spr_delete</sprite>
       <sprite>sprites\spr_miss</sprite>
@@ -109,6 +111,7 @@
     <sprites name="Text">
       <sprite>sprites\spr_adv_settings_explanation</sprite>
       <sprite>sprites\spr_code_explanation</sprite>
+      <sprite>sprites\spr_sound_control</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

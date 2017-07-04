@@ -10,7 +10,7 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>audio_stop_sound(background);
+  <code>audio_stop_all();
 
 var play_button = instance_create(room_width / 2, room_height * 10 / 20, obj_button);
 play_button.sprite_index = spr_play_button;
