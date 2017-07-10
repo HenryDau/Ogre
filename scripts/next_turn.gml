@@ -14,7 +14,7 @@ if (global.turn == "DS"){
         
     global.unit_selected = "Ogre"
     
-    global.selected_display = instance_create(x_start, y_start - 64, obj_display);
+    global.selected_display = instance_create(x_start - 50, y_start - 63, obj_display);
     global.selected_display.sprite_index = spr_ogre;
     global.selected_display.this_unit = "Ogre";
 
@@ -37,7 +37,7 @@ if (global.turn == "DS"){
     with (obj_display)
         instance_destroy();
     
-    global.selected_display = instance_create(x_start, y_start - 64, obj_display);
+    global.selected_display = instance_create(x_start - 50, y_start - 63, obj_display);
     global.selected_display.sprite_index = spr_ogre;
     global.selected_display.this_unit = "Ogre";
     

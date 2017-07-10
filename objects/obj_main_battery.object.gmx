@@ -30,6 +30,7 @@ attack = 4;
 range = 3;
 defense = 4;
 this_unit = "Main Battery";
+sound_effect = snd_heavy_machine_gun;
 </string>
           </argument>
         </arguments>

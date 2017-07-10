@@ -1,5 +1,6 @@
 var x_dst = argument[0];
 var y_dst = argument[1];
+
 var ignore_blockages = false;
 if (get_selected_unit() == obj_ogre || get_selected_unit() == obj_infantry 
     || global.turn == "AA" || global.turn == "DA")

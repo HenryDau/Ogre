@@ -3,7 +3,7 @@
   <spriteName>spr_checkbox</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>-4</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -54,6 +54,9 @@
           <argument>
             <kind>1</kind>
             <string>global.quick_combat = !global.quick_combat;
+
+if (global.sound_enabled)
+    audio_play_sound(snd_click, 0, false);
 
 if (global.quick_combat == true){
     sprite_index = spr_checkbox_checked;

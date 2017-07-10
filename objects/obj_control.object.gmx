@@ -27,8 +27,13 @@
             <kind>1</kind>
             <string>/// Define constants and displays
 
+audio_stop_all();
+
 if (global.sound_enabled)
-    audio_play_sound(background, 10, true);
+    if (global.intense_music)
+        audio_play_sound(snd_menu, 10, true);
+    else
+        audio_play_sound(snd_background, 10, true);
 
 randomize();
 
@@ -82,7 +87,7 @@ x_start = 448;
 y_start = 96;
 offset = 5;
 
-global.selected_display = instance_create(x_start, y_start - 64, obj_display);
+global.selected_display = instance_create(x_start - 50, y_start - 63, obj_display);
 global.selected_display.this_unit = "None";
 
 var disp = instance_create(x_start, y_start, obj_display);
@@ -472,8 +477,8 @@ if (global.turn == "DS"){
 }
 
 // Show selected unit
-draw_text_color(x_start, y_start - 64 - 32, "Selected Unit", c_black, c_black, c_black, c_black, 1);
-draw_text_color(x_start + 32, y_start - offset - 64, global.unit_selected, c_black, c_black, c_black, c_black, 1);
+draw_text_color(x_start - 50, y_start - 64 - 32, "Selected Unit", c_black, c_black, c_black, c_black, 1);
+draw_text_color(x_start + 24 - 50, y_start - offset - 64, global.unit_selected, c_black, c_black, c_black, c_black, 1);
 
 if (global.turn != "DS" &amp;&amp; global.turn != "AS"){
     // Show current unit details

@@ -30,6 +30,7 @@ attack = 1;
 range = 1;
 defense = 1;
 this_unit = "Antipersonnel";
+sound_effect = snd_machine_gun_burst;
 </string>
           </argument>
         </arguments>

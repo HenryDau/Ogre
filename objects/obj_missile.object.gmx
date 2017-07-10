@@ -30,6 +30,7 @@ attack = 6;
 range = 5;
 defense = 3;
 this_unit = "Missile";
+sound_effect = snd_missile_launch;
 </string>
           </argument>
         </arguments>

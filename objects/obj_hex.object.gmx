@@ -120,9 +120,13 @@ if (global.turn == "AM"){
                 sprite_index = spr_hex;
                 
                 if (def.name == "Command Post"){
+                
+                    global.defender = noone;
+                    global.target = noone;
+                
                     with (def)
                         instance_destroy();
-                        
+ 
                     var display = instance_create(784, 160, obj_result);
                     display.sprite_index = spr_kill;
                     

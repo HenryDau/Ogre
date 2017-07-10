@@ -4,13 +4,22 @@ var y_dst = argument[2];
 
 if (global.turn == "AM"){
     // Ogre moving
-    if (tile == get_tile_at_ogre() && instance_number(obj_multiple_units) == 0)
+    if (tile == get_tile_at_ogre() && instance_number(obj_multiple_units) == 0) {
+    
+        // If the ogre isn't on top of another unit, don't let the ogre move onto the same hex
         tile.sprite_index = spr_hex;
-    else {
+    } else {
+    
+        // Normal Movement
         if ((obj_ogre.rams_this_turn >= obj_ogre.MAX_RAMS && place_meeting(x_dst, y_dst, obj_defender)) && !place_meeting(x_dst, y_dst, obj_infantry))
             tile.sprite_index = spr_hex;
         else
             tile.sprite_index = spr_valid_hex;
+        
+        // Don't let the Ogre move through units without ramming
+        /*if (place_meeting(x_dst, y_dst, obj_defender)) {
+            tile.cost = movement + 1;
+        }*/
     }
     
 } else if (global.turn == "DM" || global.turn == "DM2"){
@@ -59,7 +68,8 @@ if (global.turn == "AM"){
                 antipersonnel_selected = true;
         }
         
-        if (get_selected_unit() == obj_antipersonnel || antipersonnel_selected){
+        //if (get_selected_unit() == obj_antipersonnel || antipersonnel_selected){
+        if (antipersonnel_selected){
         
             var infantry = instance_place(x_dst, y_dst, obj_infantry);
             if ((infantry != noone && !infantry.been_attacked) || place_meeting(x_dst, y_dst, obj_cp)){
@@ -68,7 +78,7 @@ if (global.turn == "AM"){
                 tile.sprite_index = spr_hex;
             }
         } else {
-            var infantry = instance_place(x_dst, y_dst, obj_infantry);
+            /*var infantry = instance_place(x_dst, y_dst, obj_infantry);
             if (infantry != noone){
                 if (!infantry.been_attacked)
                     tile.sprite_index = spr_valid_hex;
@@ -76,7 +86,8 @@ if (global.turn == "AM"){
                     tile.sprite_index = spr_hex;
             } else {
                 tile.sprite_index = spr_valid_hex;
-            }
+            }*/
+             tile.sprite_index = spr_valid_hex;
         }
     } else {
         tile.sprite_index = spr_hex;

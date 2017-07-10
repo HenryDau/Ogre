@@ -10,7 +10,12 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>audio_stop_all();
+  <code>if (!audio_is_playing(snd_menu)){
+    audio_play_sound(snd_menu, 10, true);
+}
+
+stop_sounds();
+
 
 var play_button = instance_create(room_width / 2, room_height * 10 / 20, obj_button);
 play_button.sprite_index = spr_play_button;

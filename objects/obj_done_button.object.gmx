@@ -98,7 +98,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>next_turn();
+            <string>if (visible &amp;&amp; instance_number(obj_victory_display) == 0) {
+    if (global.sound_enabled)
+        audio_play_sound(snd_click, 1, false);
+        
+    next_turn();
+}
 </string>
           </argument>
         </arguments>

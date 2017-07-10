@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="6" enumb="0">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>check_win(true);
+            <string>if (visible &amp;&amp; instance_number(obj_victory_display) == 0) {
+    if (global.sound_enabled)
+        audio_play_sound(snd_click, 1, false);
+            
+    check_win(true);
+}
 </string>
           </argument>
         </arguments>

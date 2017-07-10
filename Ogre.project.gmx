@@ -5,8 +5,25 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\background</sound>
-    <sound>sound\sound_dad</sound>
+    <sound>sound\snd_background</sound>
+    <sound>sound\snd_dad</sound>
+    <sound>sound\snd_intense</sound>
+    <sound>sound\snd_menu</sound>
+    <sounds name="Sound Effects">
+      <sound>sound\snd_click</sound>
+      <sound>sound\snd_machine_gun_burst_two</sound>
+      <sound>sound\snd_long_machine_gun</sound>
+      <sound>sound\snd_missile_launch</sound>
+      <sound>sound\snd_heavy_machine_gun</sound>
+      <sound>sound\snd_impact</sound>
+      <sound>sound\snd_explosion</sound>
+      <sound>sound\snd_machine_gun_burst</sound>
+      <sound>sound\snd_double_shot</sound>
+      <sound>sound\snd_single_gun_shot</sound>
+      <sound>sound\snd_wrong</sound>
+      <sound>sound\snd_scream</sound>
+      <sound>sound\snd_victory</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="Defenders">
@@ -151,6 +168,7 @@
     <script>scripts\launch_attack.gml</script>
     <script>scripts\get_odds.gml</script>
     <script>scripts\check_win.gml</script>
+    <script>scripts\stop_sounds.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Terrain">
@@ -172,6 +190,7 @@
       <objects name="Settings">
         <object>objects\obj_quick_combat_setting</object>
         <object>objects\obj_sound_setting</object>
+        <object>objects\obj_music_type</object>
         <object>objects\obj_sliding_bar</object>
         <object>objects\obj_sliding_bar_box</object>
         <object>objects\obj_restore_defaults_button</object>
@@ -186,9 +205,9 @@
       <object>objects\obj_simple_display</object>
       <object>objects\obj_surrender_menu</object>
       <object>objects\obj_game_over</object>
+      <object>objects\obj_turn_display</object>
       <object>objects\obj_victory_display</object>
       <object>objects\obj_text_holder</object>
-      <object>objects\obj_turn_display</object>
     </objects>
     <objects name="Defenders">
       <object>objects\obj_heavy_tank</object>

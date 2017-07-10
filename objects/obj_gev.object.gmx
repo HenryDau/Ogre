@@ -31,6 +31,7 @@ defense = 2
 movement = 4
 event_inherited();
 name = "GEV"
+sound_effect = snd_machine_gun_burst;
 </string>
           </argument>
         </arguments>

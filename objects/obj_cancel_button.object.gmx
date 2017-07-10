@@ -49,7 +49,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if (global.sound_enabled)
+    audio_play_sound(snd_click, 1, false);
+    
 with (obj_to_destroy){
     instance_destroy();
 }

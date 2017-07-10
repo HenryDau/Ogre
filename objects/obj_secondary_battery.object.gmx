@@ -30,6 +30,7 @@ attack = 3;
 range = 2;
 defense = 3;
 this_unit = "Secondary Battery";
+sound_effect = snd_double_shot;
 </string>
           </argument>
         </arguments>

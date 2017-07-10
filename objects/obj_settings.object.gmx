@@ -3,7 +3,7 @@
   <spriteName>spr_options</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-3</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,9 +28,11 @@
             <string>
 var offset = 55;
 
-quick_combat = instance_create(x + offset, y - 40, obj_quick_combat_setting);
+quick_combat = instance_create(x + offset, y - 20, obj_quick_combat_setting);
 
-sound = instance_create(x + offset, y, obj_sound_setting);
+sound = instance_create(x + offset, y + 20, obj_sound_setting);
+
+music = instance_create(x + offset, y + 80, obj_music_type);
 </string>
           </argument>
         </arguments>
@@ -59,6 +61,10 @@ with (quick_combat) {
 }
 
 with (sound) {
+    instance_destroy();
+}
+
+with (music) {
     instance_destroy();
 }
 </string>

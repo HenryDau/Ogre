@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.armor_units = 12;
+            <string>if (global.sound_enabled)
+    audio_play_sound(snd_click, 1, false);
+
+global.armor_units = 12;
 global.infantry_units = 20;
 global.forward_units = 20;
 </string>

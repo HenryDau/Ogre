@@ -73,7 +73,7 @@ current_movement = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="0">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -92,6 +92,9 @@ current_movement = 0;
             <kind>1</kind>
             <string>global.unit_selected = "Ogre";
 global.selected_display.sprite_index = spr_ogre;
+
+if (global.sound_enabled)
+    audio_play_sound(snd_click, 1, false);
 </string>
           </argument>
         </arguments>

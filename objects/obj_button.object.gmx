@@ -50,7 +50,8 @@ gotoRoom     = rm_game;     //Set the room to goto when pressed
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(gotoRoom);
+            <string>audio_play_sound(snd_click, 10, false);
+room_goto(gotoRoom);
 </string>
           </argument>
         </arguments>

@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="6" enumb="0">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,9 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.paused = true;
-
-instance_create(room_width / 2, room_height / 2, obj_surrender_menu);
+            <string>if (instance_number(obj_victory_display) == 0){
+    global.paused = true;
+    
+    if (global.sound_enabled)
+        audio_play_sound(snd_click, 1, false);
+    
+    instance_create(room_width / 2, room_height / 2, obj_surrender_menu);
+}
 </string>
           </argument>
         </arguments>

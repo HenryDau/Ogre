@@ -62,6 +62,10 @@ with (obj_result)
             <kind>1</kind>
             <string>/// Show result
 
+audio_stop_sound(snd_click);
+
+image_speed = 0;
+
 roll = floor(random(6)) + 1;
 
 switch (roll){
@@ -98,6 +102,7 @@ if (global.turn == "AA" || global.turn == "AM"){
             instance_destroy();
         }
         global.defender = noone;
+        global.target = noone;
         
         
     } else if (roll &lt;= disable + kill){
@@ -190,6 +195,16 @@ if (global.turn == "AA" || global.turn == "AM"){
     show_debug_message("Check the dice, it has to be someone's attacking turn");  
 }
 
+/*if (global.turn == "AM"){
+        var tile = get_tile_at_ogre();
+        with(tile)
+            show_valid_moves(obj_ogre.current_movement);
+        
+} else {
+    obj_hex.sprite_index = spr_hex;
+}*/
+
+global.target = noone;
 global.paused = false;
 check_win(false);
 </string>
@@ -216,7 +231,10 @@ check_win(false);
             <kind>1</kind>
             <string>if (image_speed &gt; 0){
     image_speed *= .95;
+    //audio_play_sound(snd_click, 0, false);
 }
+
+
 </string>
           </argument>
         </arguments>

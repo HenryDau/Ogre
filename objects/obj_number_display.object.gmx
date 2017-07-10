@@ -53,11 +53,13 @@ image_speed = 0;
           <argument>
             <kind>1</kind>
             <string>if (mouse_y &gt; y + threshold){
+    audio_play_sound(snd_click, 10, false);
     number--;
     if (number &lt; 0)
         number = 9;
     image_index--;
 } else if (mouse_y &lt; y - threshold){
+    audio_play_sound(snd_click, 1, false);
     number++;
     if (number &gt; 9)
         number = 0;

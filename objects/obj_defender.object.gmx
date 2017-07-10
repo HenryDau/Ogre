@@ -60,6 +60,12 @@ if (tile != noone){
 } else {
     show_debug_message("WARNING, WHY DIDNT THIS HAVE A TILE?!?!");
 }
+
+if (global.sound_enabled)
+    if (cost_type != "infantry")
+        audio_play_sound(snd_explosion, 1, false);
+    else if (cost_type  == "infantry")
+        audio_play_sound(snd_scream, 1, false);
 </string>
           </argument>
         </arguments>
@@ -128,6 +134,9 @@ else {
           <argument>
             <kind>1</kind>
             <string>if (!global.paused){
+
+    if (global.sound_enabled)
+        audio_play_sound(snd_click, 1, false);
     
     var tile = get_tile_at(x,y);
     if (global.turn == "DA" &amp;&amp; tile.sprite_index == spr_valid_hex &amp;&amp; name != "Command Post"){
@@ -138,6 +147,7 @@ else {
         if (tile.sprite_index == spr_valid_hex){
         
             if (global.target != noone){
+                //show_debug_message(global.target);
                 var old_tile = get_tile_at(global.target.x, global.target.y);
                 old_tile.sprite_index = spr_valid_hex;
             }
@@ -186,7 +196,7 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.turn != "AS"){
+            <string>if (global.turn != "AS" &amp;&amp; instance_number(obj_multiple_units) == 0){
     global.unit_selected = name;
     global.selected_display.sprite_index = sprite_index;
     global.defender = id;

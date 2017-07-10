@@ -121,6 +121,9 @@ if (mode == 1){
           <argument>
             <kind>1</kind>
             <string>bar.x = mouse_x;
+
+if (global.sound_enabled)
+    audio_play_sound(snd_click, 0, false);
 </string>
           </argument>
         </arguments>

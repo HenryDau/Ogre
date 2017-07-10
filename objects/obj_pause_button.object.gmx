@@ -25,21 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if (instance_number(obj_settings) == 0){
+            <string>if (instance_number(obj_victory_display) == 0){
 
-    instance_create(room_width / 2, room_height / 2, obj_settings)
+    if (global.sound_enabled)
+        audio_play_sound(snd_click, 1, false);
         
-    global.paused = true;
-
-} else {
-
-    with (obj_settings){
-        instance_destroy();
+    if (instance_number(obj_settings) == 0){
+    
+        instance_create(room_width / 2, room_height / 2, obj_settings)
+            
+        global.paused = true;
+    
+    } else {
+    
+        with (obj_settings){
+            instance_destroy();
+        }
+        
+        global.paused = false;
     }
-    
-    global.paused = false;
-    
 }
 
 </string>

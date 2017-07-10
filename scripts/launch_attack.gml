@@ -2,18 +2,27 @@ var chance = get_odds();
 
 if (global.turn == "AA"){
 
+    //Antipersonnel selected (Infantry can not be attacked by antipersonnel more than once per turn)
+    var antipersonnel_selected = false;
+
     // Get the attack and disable weapons
     with (obj_display){
         if (selected){
+            audio_play_sound(sound_effect, 1, false);
+
             outline.visible = false;
             has_shot = true;
             selected = false;
             if (sprite_index == spr_missile && global.selected_display != id)
                 instance_destroy();
+            if (sprite_index == spr_antipersonnel && global.selected_display != id)
+                antipersonnel_selected = true;
         }
     }
     
-    if (global.target.cost_type == "infantry")
+    show_debug_message("Attcked with antipersonnel: " + string(antipersonnel_selected));
+    
+    if (global.target.cost_type == "infantry" && antipersonnel_selected)
         global.target.been_attacked = true;
 
     // Set the range to null
@@ -25,6 +34,8 @@ if (global.turn == "AA"){
 
     with (obj_defender){
         if (selected){
+            if (global.sound_enabled)
+                audio_play_sound( sound_effect, 0, false);
             has_shot = true;
             selected = false;
             var tile = get_tile_at(x,y);

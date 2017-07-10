@@ -25,8 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = false;
-launch_attack();
+            <string>if (visible){
+    if (global.sound_enabled)
+        audio_play_sound(snd_click, 1, false);
+    
+    visible = false;
+    launch_attack();
+}
 </string>
           </argument>
         </arguments>
