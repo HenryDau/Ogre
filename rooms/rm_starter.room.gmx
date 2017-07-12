@@ -17,6 +17,7 @@ global.armor_units = 12;
 global.infantry_units = 20;
 global.forward_units = 20;
 global.intense_music = false;
+global.volume = 100.0;
 
 room_goto(rm_menu);</code>
   <enableViews>0</enableViews>

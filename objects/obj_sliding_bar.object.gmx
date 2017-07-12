@@ -46,6 +46,8 @@ if (mode == 1){
     value_to_change = global.armor_units;
 } else if (mode == 3) {
     value_to_change = global.forward_units;
+} else if (mode == 4) {
+    value_to_change = global.volume;
 }
 
 clicked = false;
@@ -72,14 +74,14 @@ clicked = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-if (mode == 1){
+            <string>if (mode == 1){
     value_to_change = global.infantry_units;
 } else if (mode == 2) {     
     value_to_change = global.armor_units;
 } else if (mode == 3) {
     value_to_change = global.forward_units;
+} else if (mode == 4) {
+    value_to_change = global.volume;
 }
 
 if (!bar.clicked &amp;&amp; value_to_change != floor(bar.percentage * (MAX_VALUE - MIN_VALUE) + MIN_VALUE)){
@@ -94,9 +96,14 @@ if (!bar.clicked &amp;&amp; value_to_change != floor(bar.percentage * (MAX_VALUE
 if (mode == 1){
     global.infantry_units = value_to_change;
 } else if (mode == 2) {     
-    global.armor_units = value_to_change;;
+    global.armor_units = value_to_change;
 } else if (mode == 3) {
-    global.forward_units = value_to_change;;
+    global.forward_units = value_to_change;
+} else if (mode == 4) {
+    global.volume = value_to_change;
+    //show_debug_message(string(global.volume / 100.0));
+    //sound_volume(snd_menu, global.volume / 100.0);
+    //sound_global_volume(global.volume / 100.0);
 }
 </string>
           </argument>

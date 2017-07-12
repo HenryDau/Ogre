@@ -16,7 +16,6 @@
 
 stop_sounds();
 
-
 var play_button = instance_create(room_width / 2, room_height * 10 / 20, obj_button);
 play_button.sprite_index = spr_play_button;
 play_button.gotoRoom = rm_game;

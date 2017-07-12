@@ -14,7 +14,16 @@
 play_button.sprite_index = spr_play_button;
 play_button.gotoRoom = rm_game;*/
 
-var settings_button = instance_create(room_width / 2, room_height * 14 / 20, obj_button);
+global.slider_clicked = false;
+var slider_offset = 50;
+
+var volume_slider = instance_create(room_width / 2 + slider_offset, room_height * 12 / 20, obj_sliding_bar);
+volume_slider.value_to_change = global.volume;
+volume_slider.text = "Sound Volume: ";
+volume_slider.offset = 250;
+volume_slider.mode = 4;
+
+var settings_button = instance_create(room_width / 2, room_height * 15 / 20, obj_button);
 settings_button.sprite_index = spr_adv_settings_button;
 settings_button.gotoRoom = rm_advanced_settings;
 
