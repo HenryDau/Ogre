@@ -2,8 +2,8 @@
 
 var obstructed_y = 480;
 var crater_y = 224;
-var bottom_y = 672;
-//var bottom_y = 50;
+//var bottom_y = 672;
+var bottom_y = 50;
 
 if (global.turn == "DS"){
     with(obj_hex){

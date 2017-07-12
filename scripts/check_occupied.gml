@@ -87,7 +87,7 @@ if (global.turn == "AM"){
             } else {
                 tile.sprite_index = spr_valid_hex;
             }*/
-             tile.sprite_index = spr_valid_hex;
+            tile.sprite_index = spr_valid_hex;
         }
     } else {
         tile.sprite_index = spr_hex;

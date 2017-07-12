@@ -31,6 +31,7 @@ if (global.turn == "AA"){
 } else if (global.turn == "DA"){
 
     global.target.outline.visible = false;
+    global.target.selected = false;
 
     with (obj_defender){
         if (selected){
