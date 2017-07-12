@@ -28,11 +28,17 @@
             <string>
 var offset = 55;
 
-quick_combat = instance_create(x + offset, y - 20, obj_quick_combat_setting);
+quick_combat = instance_create(x + offset, y - 100, obj_quick_combat_setting);
 
-sound = instance_create(x + offset, y + 20, obj_sound_setting);
+volume_slider = instance_create(x + offset + 20, y - 10, obj_sliding_bar);
+volume_slider.value_to_change = global.volume;
+volume_slider.text = "Sound Volume: ";
+volume_slider.offset = 250;
+volume_slider.mode = 4;
 
-music = instance_create(x + offset, y + 80, obj_music_type);
+sound = instance_create(x + offset, y + 40, obj_sound_setting);
+
+music = instance_create(x + offset, y + 110, obj_music_type);
 </string>
           </argument>
         </arguments>
@@ -65,6 +71,10 @@ with (sound) {
 }
 
 with (music) {
+    instance_destroy();
+}
+
+with(volume_slider) {
     instance_destroy();
 }
 </string>

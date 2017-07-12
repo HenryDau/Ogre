@@ -3,7 +3,7 @@
   <spriteName>spr_sliding_bar</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>-4</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -57,6 +57,31 @@ clicked = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(bar){
+    instance_destroy()
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -101,6 +126,8 @@ if (mode == 1){
     global.forward_units = value_to_change;
 } else if (mode == 4) {
     global.volume = value_to_change;
+    set_sound_volumes();
+    //audio_sound_gain(snd_menu, global.volume / 100.0, 0);
     //show_debug_message(string(global.volume / 100.0));
     //sound_volume(snd_menu, global.volume / 100.0);
     //sound_global_volume(global.volume / 100.0);

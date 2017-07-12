@@ -124,6 +124,7 @@
       <sprite>sprites\spr_surrender</sprite>
       <sprite>sprites\spr_game_over</sprite>
       <sprite>sprites\spr_options</sprite>
+      <sprite>sprites\spr_ogre_backgrond</sprite>
     </sprites>
     <sprites name="Text">
       <sprite>sprites\spr_adv_settings_explanation</sprite>
@@ -134,6 +135,7 @@
   <backgrounds name="background">
     <background>background\title</background>
     <background>background\dad</background>
+    <background>background\background_ogre</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -169,6 +171,7 @@
     <script>scripts\get_odds.gml</script>
     <script>scripts\check_win.gml</script>
     <script>scripts\stop_sounds.gml</script>
+    <script>scripts\set_sound_volumes.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Terrain">
@@ -186,7 +189,6 @@
         <object>objects\obj_run_button</object>
         <object>objects\obj_code_button</object>
         <object>objects\obj_pause_button</object>
-        <object>objects\obj_junk_button</object>
       </objects>
       <objects name="Settings">
         <object>objects\obj_quick_combat_setting</object>
@@ -209,6 +211,7 @@
       <object>objects\obj_turn_display</object>
       <object>objects\obj_victory_display</object>
       <object>objects\obj_text_holder</object>
+      <object>objects\obj_ogre_holder</object>
     </objects>
     <objects name="Defenders">
       <object>objects\obj_heavy_tank</object>

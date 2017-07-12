@@ -3,7 +3,7 @@
   <caption></caption>
   <width>1024</width>
   <height>768</height>
-  <vsnap>16</vsnap>
+  <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
@@ -15,9 +15,9 @@ play_button.sprite_index = spr_play_button;
 play_button.gotoRoom = rm_game;*/
 
 global.slider_clicked = false;
-var slider_offset = 50;
+var slider_offset = 100;
 
-var volume_slider = instance_create(room_width / 2 + slider_offset, room_height * 12 / 20, obj_sliding_bar);
+var volume_slider = instance_create(room_width / 2 + slider_offset, room_height * 8 / 20, obj_sliding_bar);
 volume_slider.value_to_change = global.volume;
 volume_slider.text = "Sound Volume: ";
 volume_slider.offset = 250;
@@ -71,8 +71,10 @@ back_button.gotoRoom = rm_menu;</code>
   </views>
   <instances>
     <instance objName="obj_quick_combat_setting" x="608" y="256" name="inst_9AC3924B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound_setting" x="608" y="320" name="inst_7DB2BD28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_music_type" x="608" y="384" name="inst_5654FEE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound_setting" x="608" y="368" name="inst_7DB2BD28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_music_type" x="608" y="432" name="inst_5654FEE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ogre_holder" x="128" y="448" name="inst_0CF476CD" locked="0" code="" scaleX="1.15609753131866" scaleY="1.32173907756805" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ogre_holder" x="896" y="448" name="inst_42B22C66" locked="0" code="" scaleX="1.15609753131866" scaleY="1.32173907756805" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
