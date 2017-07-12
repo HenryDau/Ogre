@@ -262,10 +262,11 @@ if (global.turn == "DS" ){
                 with(unit)
                     instance_destroy();
                 sprite_index = spr_hex;
+                has_unit = false;
             }
         }
     } else {
-        if (!has_unit &amp;&amp; sprite_index == spr_valid_hex &amp;&amp; global.unit_selected != "None"){
+        if (!has_unit &amp;&amp; sprite_index == spr_valid_hex &amp;&amp; global.unit_selected == "Ogre"){
             obj_hex.sprite_index = spr_hex;
             instance_create(x,y,get_selected_unit());
             has_unit = true;

@@ -480,12 +480,16 @@ if (global.turn == "DS"){
 draw_text_color(x_start - 50, y_start - 64 - 32, "Selected Unit", c_black, c_black, c_black, c_black, 1);
 draw_text_color(x_start + 24 - 50, y_start - offset - 64, global.unit_selected, c_black, c_black, c_black, c_black, 1);
 
-if (global.turn != "DS" &amp;&amp; global.turn != "AS"){
-    // Show current unit details
-    show_current_unit_details(400, 50);
-} else {
-    // Move unit details in setup mode
-    show_current_unit_details(400, 500);
+if (global.turn != "AS"){
+    if (global.turn == "DS"){
+    
+        // Move unit details in setup mode
+        show_current_unit_details(400, 500);
+    } else {
+    
+        // Show current unit details
+        show_current_unit_details(400, 50);
+    }
 }
 
 if (global.turn == "AA" || global.turn == "DA"){

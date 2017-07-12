@@ -54,7 +54,15 @@ selected = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var tile = instance_place(x, y, obj_hex);
+            <string>if (global.defender == id){
+    global.defender = noone;
+}
+
+if (global.target == id){
+    global.target = noone;
+}
+
+var tile = instance_place(x, y, obj_hex);
 if (tile != noone){
     tile.has_unit = false;
 } else {
