@@ -169,8 +169,10 @@ else {
             }
         } else {
         
-            var old_tile = get_tile_at(global.target.x, global.target.y);
-            old_tile.sprite_index = spr_valid_hex;
+            if (global.target != noone) {
+                var old_tile = get_tile_at(global.target.x, global.target.y);
+                old_tile.sprite_index = spr_valid_hex;
+            }
             
             global.target = noone;
             obj_attack_button.visible = false;
