@@ -186,6 +186,7 @@
         <object>objects\obj_run_button</object>
         <object>objects\obj_code_button</object>
         <object>objects\obj_pause_button</object>
+        <object>objects\obj_junk_button</object>
       </objects>
       <objects name="Settings">
         <object>objects\obj_quick_combat_setting</object>

@@ -64,13 +64,15 @@ if (one.number == 0 &amp;&amp; two.number == 7 &amp;&amp; three.number == 1 &amp
     room_goto(rm_easter_egg);
 } else {
 
-    // No dice!
-    var incorrect = instance_create(room_width / 2, room_height / 2, obj_game_over);
-    incorrect.victory_display = spr_incorrect;
-    incorrect.next_room = rm_code;
-    
-    if (global.sound_enabled)
-        audio_play_sound(snd_wrong, 10, false);
+    if (instance_number(obj_game_over) == 0){
+        // No dice!
+        var incorrect = instance_create(room_width / 2, room_height / 2, obj_game_over);
+        incorrect.victory_display = spr_incorrect;
+        incorrect.next_room = rm_code;
+        
+        if (global.sound_enabled)
+            audio_play_sound(snd_wrong, 10, false);
+    }
 }
 </string>
           </argument>
