@@ -46,6 +46,7 @@ global.paused = false;
 
 MAX_WIDTH = view_wview;
 MAX_HEIGHT = view_hview;
+zoom = 1;
 
 if (1){
     infantry_units = global.infantry_units;
@@ -297,6 +298,66 @@ if (global.turn == "AM"){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Zooming
+if (mouse_wheel_down()){
+    //if (view_hview[0] &lt; MAX_HEIGHT &amp;&amp; view_wview[0] &lt; MAX_WIDTH){
+    if (zoom &lt; 1){
+        zoom /= .9;
+        
+        /*view_hview[0] /= .9;
+        view_wview[0] /= .9;
+        show_debug_message("Zooming out...:" + string(view_hview[0]));
+        */
+    } else {
+        zoom = 1;
+    }
+}
+
+if (mouse_wheel_up()){
+    //if (view_hview[0] &gt; 200 &amp;&amp; view_wview[0] &gt; 200){
+    if (zoom &gt; .2){
+        zoom *= .9;
+        /*view_hview[0] *= .9;
+        view_wview[0] *= .9;
+        show_debug_message("Zooming in...:" + string(view_hview[0]));
+        */
+    }
+}
+
+var _mouse_x, _mouse_y
+_mouse_x = (mouse_x - view_xview) / view_wview;
+_mouse_y = (mouse_y - view_yview) / view_hview;
+
+view_wview = MAX_WIDTH * zoom;
+view_hview = MAX_HEIGHT * zoom;
+
+if (zoom == 1){
+    view_xview = 0;
+    view_yview = 0;
+} else {
+    view_xview = mouse_x - view_wview * _mouse_x;
+    view_yview = mouse_y - view_hview * _mouse_y;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="6" enumb="61">
       <action>
@@ -315,10 +376,10 @@ if (global.turn == "AM"){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (view_hview &gt; 200 &amp;&amp; view_wview &gt; 200){
+            <string>/*if (view_hview &gt; 200 &amp;&amp; view_wview &gt; 200){
     view_hview /= .9;
     view_wview /= .9;
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -341,10 +402,10 @@ if (global.turn == "AM"){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (view_hview &lt; MAX_HEIGHT &amp;&amp; view_wview &lt; MAX_WIDTH){
+            <string>/*if (view_hview &lt; MAX_HEIGHT &amp;&amp; view_wview &lt; MAX_WIDTH){
     view_hview *= .9;
     view_wview *= .9;
-}
+}*/
 </string>
           </argument>
         </arguments>
