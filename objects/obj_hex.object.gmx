@@ -279,7 +279,7 @@ if (global.turn == "DS" ){
             var unit = instance_place(x,y, obj_infantry)
             if (global.defender.cost_type == "infantry" &amp;&amp; unit != noone){
                 if (unit != global.defender){       // Gotta do this check so a unit doesn't move onto itself
-                    show_debug_message("Special infantry stacking...");
+                    //show_debug_message("Special infantry stacking...");
                     
                     // Current unit is an infantry moving onto an infantry, so do special infantry stacking
                     var new_attack = global.defender.attack + unit.attack;
@@ -304,8 +304,10 @@ if (global.turn == "DS" ){
                     }
                     
                     // Destroy the old unit
-                    with (unit)
+                    with (unit) {
+                        merging = true;
                         instance_destroy();
+                    }
                     
                     // Tell the old tile it doesn't have a unit anymore and remove last selected tile
                     global.tile.has_unit = false;

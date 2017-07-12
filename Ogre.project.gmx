@@ -202,8 +202,8 @@
       <object>objects\obj_result</object>
       <object>objects\obj_dice</object>
       <object>objects\obj_multiple_units</object>
-      <object>objects\obj_simple_display</object>
       <object>objects\obj_surrender_menu</object>
+      <object>objects\obj_simple_display</object>
       <object>objects\obj_game_over</object>
       <object>objects\obj_turn_display</object>
       <object>objects\obj_victory_display</object>

@@ -116,6 +116,9 @@ if (global.turn == "AA" || global.turn == "AM"){
                     instance_destroy();
                     global.defender = noone;
                 } else {
+                
+                    if (global.sound_enabled)
+                        audio_play_sound(snd_scream, 1, false);
                     //show_debug_message("New attack after disable = " + string(attack--));
                     attack -= 1;
                     defense -= 1;

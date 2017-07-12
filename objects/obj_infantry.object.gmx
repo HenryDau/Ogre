@@ -31,6 +31,7 @@ event_inherited();
 cost_type = "infantry";
 been_attacked = false;
 sound_effect = snd_machine_gun_burst_two;
+merging = false;
 
 var spr = global.selected_display.sprite_index;
 if (spr == spr_infantry){ 

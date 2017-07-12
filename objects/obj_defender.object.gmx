@@ -72,7 +72,7 @@ if (tile != noone){
 if (global.sound_enabled)
     if (cost_type != "infantry")
         audio_play_sound(snd_explosion, 1, false);
-    else if (cost_type  == "infantry")
+    else if (cost_type  == "infantry" &amp;&amp; !merging)
         audio_play_sound(snd_scream, 1, false);
 </string>
           </argument>
