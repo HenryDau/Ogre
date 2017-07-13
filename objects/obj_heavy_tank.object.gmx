@@ -32,6 +32,7 @@ movement = 3
 event_inherited();
 name = "Heavy Tank"
 sound_effect = snd_impact;
+moving_sound = snd_engine;
 </string>
           </argument>
         </arguments>

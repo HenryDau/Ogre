@@ -5,17 +5,9 @@ if (cost <= movement){
 
     if (global.turn == "DA"){
     
-        var is_howitzer = false;
-        with (obj_defender){
-            if (sprite_index == spr_howitzer){
-                is_howitzer = true;
-                break;
-            }
-        }
-    
         var range = 4;
         
-        if (is_howitzer)
+        if (instance_exists(obj_howitzer))
             range = 8;
         
         var unit = instance_place(x,y,obj_defender);

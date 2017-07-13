@@ -32,6 +32,7 @@ movement = 2
 event_inherited();
 name = "Missile Tank"
 sound_effect = snd_single_gun_shot;
+moving_sound = snd_engine;
 </string>
           </argument>
         </arguments>

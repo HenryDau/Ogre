@@ -108,6 +108,9 @@ if (global.turn == "AM"){
                 y = other.y;
             }
             
+            if (global.sound_enabled)
+                audio_play_sound(obj_ogre.moving_sound, 0, false);
+            
             with(obj_hex){
                 sprite_index = spr_hex
                 cost = 0;
@@ -319,6 +322,9 @@ if (global.turn == "DS" ){
                         cost = 0;
                     }
                     
+                    if (global.sound_enabled)
+                        audio_play_sound(global.defender.moving_sound, 0, false);
+                    
                     // If the unit still has moves left, show those moves
                     if (global.defender.current_movement &gt; 1){
                         
@@ -355,6 +361,9 @@ if (global.turn == "DS" ){
                     global.tile = id;
                 }
                 has_unit = true;
+                
+                if (global.sound_enabled)
+                    audio_play_sound(global.defender.moving_sound, 0, false);
                 
                 if (id == get_tile_at_ogre()){
                     // RAMMED!

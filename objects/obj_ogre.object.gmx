@@ -29,6 +29,7 @@
 main_battery_count = 1;
 secondary_battery_count = 4;
 antipersonnel_count = 8;
+moving_sound = snd_engine;
 
 tread_count = 45;
 treads_left = tread_count;

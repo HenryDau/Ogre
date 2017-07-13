@@ -32,6 +32,7 @@ movement = 4
 event_inherited();
 name = "GEV"
 sound_effect = snd_machine_gun_burst;
+moving_sound = snd_engine;
 </string>
           </argument>
         </arguments>

@@ -13,3 +13,5 @@ audio_stop_sound(snd_double_shot);
 audio_stop_sound(snd_single_gun_shot);
 audio_stop_sound(snd_victory);
 audio_stop_sound(snd_intense);
+audio_stop_sound(snd_running);
+audio_stop_sound(snd_engine);

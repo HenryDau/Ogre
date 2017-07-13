@@ -17,3 +17,5 @@ audio_sound_gain(snd_victory, volume, 0);
 audio_sound_gain(snd_intense, volume, 0);
 audio_sound_gain(snd_scream, volume, 0);
 audio_sound_gain(snd_wrong, volume, 0);
+audio_sound_gain(snd_engine, volume, 0);
+audio_sound_gain(snd_running, volume, 0);

@@ -23,6 +23,8 @@
       <sound>sound\snd_wrong</sound>
       <sound>sound\snd_scream</sound>
       <sound>sound\snd_victory</sound>
+      <sound>sound\snd_engine</sound>
+      <sound>sound\snd_running</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -189,6 +191,8 @@
         <object>objects\obj_run_button</object>
         <object>objects\obj_code_button</object>
         <object>objects\obj_pause_button</object>
+        <object>objects\obj_save_button</object>
+        <object>objects\obj_load_button</object>
       </objects>
       <objects name="Settings">
         <object>objects\obj_quick_combat_setting</object>
