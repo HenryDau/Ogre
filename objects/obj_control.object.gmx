@@ -31,7 +31,7 @@ audio_stop_all();
 
 if (global.sound_enabled)
     if (global.intense_music)
-        audio_play_sound(snd_menu, 10, true);
+        audio_play_sound(snd_intense, 10, true);
     else
         audio_play_sound(snd_background, 10, true);
 
