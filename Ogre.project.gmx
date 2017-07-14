@@ -116,6 +116,7 @@
         <sprite>sprites\spr_number_display</sprite>
         <sprite>sprites\spr_incorrect</sprite>
         <sprite>sprites\spr_picture</sprite>
+        <sprite>sprites\spr_dad</sprite>
       </sprites>
       <sprite>sprites\spr_delete</sprite>
       <sprite>sprites\spr_miss</sprite>

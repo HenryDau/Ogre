@@ -16,11 +16,20 @@ back_button.image_xscale = .5;
 back_button.image_yscale = .5;
 back_button.gotoRoom = rm_menu;
 
-var text = instance_create(700, 50, obj_text_holder);
-text.sprite_index = spr_sound_control;
+//var text = instance_create(700, 50, obj_text_holder);
+//text.sprite_index = spr_sound_control;
+
+var volume_slider = instance_create(700, 50, obj_sliding_bar);
+volume_slider.value_to_change = global.volume;
+volume_slider.text = "Sound Volume: ";
+volume_slider.offset = 250;
+volume_slider.mode = 4;
 
 var pic = instance_create(0, 400, obj_text_holder);
 pic.sprite_index = spr_picture;
+
+var pic2 = instance_create(800, 0, obj_text_holder);
+pic2.sprite_index = spr_dad;
 
 audio_stop_all();
 
